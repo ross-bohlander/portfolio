@@ -1,0 +1,62 @@
+[
+  {
+    "nationality": "GHA",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "ROU",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "ITA",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "BEL",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "USA",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "FRA",
+    "count": 2,
+    "pct_of_squad": 12.5
+  },
+  {
+    "nationality": "LUX",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "GER",
+    "count": 4,
+    "pct_of_squad": 25.0
+  },
+  {
+    "nationality": "NED",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "SUI",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "COL",
+    "count": 1,
+    "pct_of_squad": 6.3
+  },
+  {
+    "nationality": "POL",
+    "count": 1,
+    "pct_of_squad": 6.3
+  }
+]

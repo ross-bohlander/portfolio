@@ -1,0 +1,26 @@
+[
+  {
+    "age_classification": "Approaching Prime",
+    "raw_count": 7,
+    "pct_of_squad": 43.8,
+    "average_age": 24.285714
+  },
+  {
+    "age_classification": "Prime",
+    "raw_count": 7,
+    "pct_of_squad": 43.8,
+    "average_age": 30.857143
+  },
+  {
+    "age_classification": "Mentor",
+    "raw_count": 1,
+    "pct_of_squad": 6.3,
+    "average_age": 34.0
+  },
+  {
+    "age_classification": "Developed Youth",
+    "raw_count": 1,
+    "pct_of_squad": 6.3,
+    "average_age": 22.0
+  }
+]
