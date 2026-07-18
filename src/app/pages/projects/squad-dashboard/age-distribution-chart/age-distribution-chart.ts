@@ -31,6 +31,11 @@ export class AgeDistributionChart {
       title: { display: true, text: 'Age Distribution: Squad vs First Team' },
     },
     scales: {
+      // `grouped` is a real bar-controller option (draws datasets in the same
+      // category slot instead of side-by-side) but isn't in chart.js's own
+      // scale types.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      x: { grouped: false } as any,
       y: { beginAtZero: true, ticks: { precision: 0 } },
     },
   };
@@ -46,11 +51,15 @@ export class AgeDistributionChart {
           label: 'Full Squad',
           data: CATEGORY_ORDER.map((category) => squadBy.get(category) ?? 0),
           backgroundColor: '#3f51b5',
+          categoryPercentage: 0.6,
+          barPercentage: 1,
         },
         {
           label: 'First Team',
           data: CATEGORY_ORDER.map((category) => firstTeamBy.get(category) ?? 0),
           backgroundColor: '#ff4081',
+          categoryPercentage: 0.6,
+          barPercentage: 0.5,
         },
       ],
     };
