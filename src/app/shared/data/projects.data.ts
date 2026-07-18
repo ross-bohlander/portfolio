@@ -2,6 +2,14 @@ import { Project } from '../models/project.model';
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'yield-curve',
+    name: 'Treasury Yield Curve',
+    summary:
+      'Self-updating ELT pipeline pulling daily par-yield-curve rates straight from Treasury.gov into BigQuery, modeled with dbt into curve, history, and 10Y-2Y/10Y-3M spread marts, refreshed daily by GitHub Actions.',
+    tags: ['BigQuery', 'dbt', 'Python', 'GitHub Actions'],
+    category: 'personal',
+  },
+  {
     slug: 'squad-planner',
     name: 'Squad Planner',
     summary: 'Snowflake + dbt ELT pipeline turning a football manager HTML export into nationality, age, and attribute-progression marts.',

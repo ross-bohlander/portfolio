@@ -1,0 +1,20 @@
+@if (rows().length === 0) {
+  <p class="empty-state">No curve data available.</p>
+} @else {
+  <table class="curve">
+    <thead>
+      <tr>
+        <th>Maturity</th>
+        <th>Yield</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.maturity_label) {
+        <tr>
+          <td>{{ row.maturity_label }}</td>
+          <td>{{ row.yield_pct }}%</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

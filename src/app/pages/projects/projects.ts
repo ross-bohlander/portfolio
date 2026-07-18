@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { PROJECTS } from '../../shared/data/projects.data';
 import { Project } from '../../shared/models/project.model';
 import { SquadDashboard } from './squad-dashboard/squad-dashboard';
+import { YieldCurveDashboard } from './yield-curve-dashboard/yield-curve-dashboard';
 
 @Component({
   selector: 'app-projects',
-  imports: [SquadDashboard, MatCardModule, MatChipsModule, MatButtonModule, MatIconModule],
+  imports: [SquadDashboard, YieldCurveDashboard, MatCardModule, MatChipsModule, MatButtonModule, MatIconModule],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
