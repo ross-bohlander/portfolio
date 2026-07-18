@@ -27,11 +27,8 @@ h1 {
   align-self: start;
 }
 
-.skill-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
+.skill-group {
+  padding: 10px 0;
   border-bottom: 1px solid var(--mat-sys-outline-variant);
 
   &:last-child {
@@ -39,13 +36,10 @@ h1 {
   }
 }
 
-.skill-name {
-  font: var(--mat-sys-title-small);
-}
-
-mat-chip.done {
-  --mat-chip-elevated-container-color: var(--mat-sys-tertiary-container);
-  --mat-chip-label-text-color: var(--mat-sys-on-tertiary-container);
+.skill-category {
+  font: var(--mat-sys-label-medium);
+  color: var(--mat-sys-on-surface-variant);
+  margin: 0 0 8px;
 }
 
 mat-chip.pending {

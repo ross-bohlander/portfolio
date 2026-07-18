@@ -37,9 +37,17 @@ export class Contact {
   private readonly fb = inject(FormBuilder);
 
   protected readonly links: ContactLink[] = [
-    { icon: 'mail', label: 'ross@example.com', href: 'mailto:ross@example.com' },
-    { icon: 'code', label: 'github.com/ross', href: 'https://github.com/ross' },
-    { icon: 'work', label: 'linkedin.com/in/ross', href: 'https://linkedin.com/in/ross' },
+    {
+      icon: 'mail',
+      label: 'rbohlander@alumni.iu.edu',
+      href: 'mailto:rbohlander@alumni.iu.edu',
+    },
+    { icon: 'code', label: 'github.com/ross-bohlander', href: 'https://github.com/ross-bohlander' },
+    {
+      icon: 'work',
+      label: 'linkedin.com/in/ross-bohlander',
+      href: 'https://www.linkedin.com/in/ross-bohlander-707232288/',
+    },
   ];
 
   protected readonly form = this.fb.nonNullable.group({

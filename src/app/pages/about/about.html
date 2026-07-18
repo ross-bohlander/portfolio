@@ -6,24 +6,41 @@
     <div class="about-grid">
       <div class="bio">
         <p>
-          Software engineer at a fixed-income investment company, working across SQL, Python,
-          automation, and reporting pipelines with portfolio management, operations, and client
-          services teams.
+          Software engineer at Reams Asset Management, an Indianapolis-based fixed-income
+          investment firm, with nearly six years of experience building and supporting production
+          ETL pipelines, data integrations, and reporting systems. Currently owns 50+
+          business-critical processes serving roughly 150 portfolios and 20 investment
+          professionals.
         </p>
         <p>
-          Currently pursuing a part-time MBA/MSBA to pair the engineering side with the business
-          questions it's supposed to answer.
+          Pursuing a dual MBA/MSBA at the University of Iowa's Tippie School of Business
+          (concentrations in Finance and Machine Learning, expected 2029), building on a B.S. in
+          Informatics from Indiana University's Luddy School (2020) — pairing the engineering side
+          with the business questions it's supposed to answer.
         </p>
       </div>
 
       <mat-card appearance="outlined" class="skill-card">
         <mat-card-content>
-          @for (skill of skills; track skill.name) {
-            <div class="skill-row">
-              <span class="skill-name">{{ skill.name }}</span>
-              <mat-chip [class]="skill.status">{{ skill.note }}</mat-chip>
+          @for (group of skillGroups; track group.category) {
+            <div class="skill-group">
+              <p class="skill-category">{{ group.category }}</p>
+              <mat-chip-set>
+                @for (item of group.items; track item) {
+                  <mat-chip>{{ item }}</mat-chip>
+                }
+              </mat-chip-set>
             </div>
           }
+
+          <div class="skill-group">
+            <p class="skill-category">Currently building</p>
+            <mat-chip-set>
+              @for (item of currentlyBuilding; track item) {
+                <mat-chip class="pending">{{ item }}</mat-chip>
+              }
+            </mat-chip-set>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

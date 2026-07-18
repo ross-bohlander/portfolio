@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 
-interface Skill {
-  name: string;
-  status: 'done' | 'pending';
-  note: string;
+interface SkillGroup {
+  category: string;
+  items: string[];
 }
 
 @Component({
@@ -15,12 +14,18 @@ interface Skill {
   styleUrl: './about.scss',
 })
 export class About {
-  protected readonly skills: Skill[] = [
-    { name: 'SQL', status: 'done', note: 'Squad planner' },
-    { name: 'Snowflake', status: 'done', note: 'Squad planner' },
-    { name: 'dbt', status: 'done', note: 'Squad planner' },
-    { name: 'Python', status: 'done', note: 'Squad planner' },
-    { name: 'Angular', status: 'pending', note: 'In progress' },
-    { name: 'FRED API', status: 'pending', note: 'Planned' },
+  protected readonly skillGroups: SkillGroup[] = [
+    { category: 'Languages & Data', items: ['Python', 'SQL (T-SQL)', 'pandas', 'Perl'] },
+    {
+      category: 'Data Engineering',
+      items: ['ETL', 'Snowflake', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
+    },
+    {
+      category: 'DevOps & Orchestration',
+      items: ['Git', 'Azure DevOps', 'CI/CD', 'Docker', 'Control-M', 'Linux'],
+    },
+    { category: 'Reporting & Analytics', items: ['Tableau', 'Power BI', 'Matplotlib', 'Excel'] },
   ];
+
+  protected readonly currentlyBuilding: string[] = ['Angular', 'FRED API'];
 }
