@@ -1,4 +1,36 @@
-<!-- TODO: contact links (email, LinkedIn, GitHub) or a form -->
-<section>
-  <h1>Contact</h1>
-</section>
+<div class="page-wrap">
+  <section>
+    <p class="eyebrow">Contact</p>
+    <h1>Get in touch</h1>
+
+    <mat-card appearance="outlined" class="contact-card">
+      <mat-card-content>
+        @for (link of links; track link.label) {
+          <a class="contact-row" [href]="link.href" target="_blank" rel="noopener">
+            <mat-icon>{{ link.icon }}</mat-icon>
+            <span>{{ link.label }}</span>
+          </a>
+        }
+
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Your name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="you@company.com" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea matInput placeholder="What's on your mind" rows="4"></textarea>
+          </mat-form-field>
+
+          <button mat-flat-button type="submit">Send message</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

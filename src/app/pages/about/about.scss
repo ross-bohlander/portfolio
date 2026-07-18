@@ -1,0 +1,60 @@
+.eyebrow {
+  font: var(--mat-sys-label-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mat-sys-primary);
+  margin: 0 0 6px;
+}
+
+h1 {
+  font: var(--mat-sys-headline-medium);
+  margin: 0 0 16px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.bio p {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-large);
+  line-height: 1.7;
+}
+
+.skill-card {
+  align-self: start;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.skill-name {
+  font: var(--mat-sys-title-small);
+}
+
+mat-chip.done {
+  --mat-chip-elevated-container-color: var(--mat-sys-tertiary-container);
+  --mat-chip-label-text-color: var(--mat-sys-on-tertiary-container);
+}
+
+mat-chip.pending {
+  --mat-chip-elevated-container-color: var(--mat-sys-surface-variant);
+  --mat-chip-label-text-color: var(--mat-sys-on-surface-variant);
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

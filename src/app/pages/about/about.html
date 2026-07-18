@@ -1,4 +1,31 @@
-<!-- TODO: background, skills, resume link -->
-<section>
-  <h1>About</h1>
-</section>
+<div class="page-wrap">
+  <section>
+    <p class="eyebrow">About</p>
+    <h1>Ross</h1>
+
+    <div class="about-grid">
+      <div class="bio">
+        <p>
+          Software engineer at a fixed-income investment company, working across SQL, Python,
+          automation, and reporting pipelines with portfolio management, operations, and client
+          services teams.
+        </p>
+        <p>
+          Currently pursuing a part-time MBA/MSBA to pair the engineering side with the business
+          questions it's supposed to answer.
+        </p>
+      </div>
+
+      <mat-card appearance="outlined" class="skill-card">
+        <mat-card-content>
+          @for (skill of skills; track skill.name) {
+            <div class="skill-row">
+              <span class="skill-name">{{ skill.name }}</span>
+              <mat-chip [class]="skill.status">{{ skill.note }}</mat-chip>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>

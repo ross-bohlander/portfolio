@@ -1,6 +1,8 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { combineLatest, map } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { SquadData } from '../../../shared/services/squad-data';
 import { ComplianceTier, ComplianceViolationWithTier } from '../../../shared/models/squad-data.model';
@@ -13,7 +15,14 @@ const TIERS: ComplianceTier[] = ['over_30', 'over_32', 'over_34'];
 
 @Component({
   selector: 'app-squad-dashboard',
-  imports: [NationalityChart, AgeDistributionChart, AttributeTrendChart, CompliancePanel],
+  imports: [
+    NationalityChart,
+    AgeDistributionChart,
+    AttributeTrendChart,
+    CompliancePanel,
+    MatCardModule,
+    MatButtonToggleModule,
+  ],
   templateUrl: './squad-dashboard.html',
   styleUrl: './squad-dashboard.scss',
 })

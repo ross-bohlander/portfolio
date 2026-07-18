@@ -1,5 +1,6 @@
-<section class="projects-page">
-  <h1>Projects</h1>
+<div class="page-wrap projects-page">
+  <p class="eyebrow">Projects</p>
+  <h1>Case studies</h1>
 
   <div class="tabs" role="tablist">
     @for (project of projects; track project.slug) {
@@ -17,27 +18,29 @@
   </div>
 
   @if (activeProject(); as project) {
-    <article class="project-detail">
-      <p class="summary">{{ project.summary }}</p>
+    <mat-card appearance="outlined" class="project-detail">
+      <mat-card-content>
+        <p class="summary">{{ project.summary }}</p>
 
-      <ul class="tags">
-        @for (tag of project.tags; track tag) {
-          <li>{{ tag }}</li>
-        }
-      </ul>
+        <mat-chip-set class="tags">
+          @for (tag of project.tags; track tag) {
+            <mat-chip>{{ tag }}</mat-chip>
+          }
+        </mat-chip-set>
 
-      <div class="links">
-        @if (project.repoUrl) {
-          <a [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
-        }
-        @if (project.liveUrl) {
-          <a [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
-        }
-      </div>
+        <div class="links">
+          @if (project.repoUrl) {
+            <a mat-stroked-button [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
+          }
+          @if (project.liveUrl) {
+            <a mat-stroked-button [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
+          }
+        </div>
 
-      @if (project.slug === 'squad-planner') {
-        <app-squad-dashboard />
-      }
-    </article>
+        @if (project.slug === 'squad-planner') {
+          <app-squad-dashboard />
+        }
+      </mat-card-content>
+    </mat-card>
   }
-</section>
+</div>
