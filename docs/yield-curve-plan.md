@@ -76,15 +76,21 @@ is the fallback if the Treasury feed proves flaky.
 
 - `treasury_ingest.py`: fetch the daily par-yield curve, parse the wide row
   (date + one column per maturity: 1M, 2M, 3M, 4M, 6M, 1Y, 2Y, 3Y, 5Y, 7Y, 10Y, 20Y, 30Y),
-  land raw observations into a BigQuery `raw` table (idempotent upsert / merge on date so
-  re-runs don't duplicate).
+  land raw observations into a BigQuery `raw` table via a `WRITE_TRUNCATE` load job — every
+  run re-fetches the full history (1990-present, a few thousand rows, trivially cheap) and
+  replaces the table wholesale, rather than incrementally upserting.
 - Auth: a GCP service account with BigQuery Data Editor + Job User; key JSON stored as a
   GitHub Actions secret. Load via `google-cloud-bigquery`.
-- Backfill: one-time historical pull (Treasury exposes multi-year CSV by year) to populate
-  the time-series view; the daily job only appends the newest observation(s).
+- **Note (learned from a real run):** the original design used a staged `MERGE` for a true
+  incremental upsert, which is arguably the more "production" pattern — but BigQuery blocks
+  all DML (`MERGE`/`UPDATE`/`INSERT`/`DELETE`) on a project with no billing account attached,
+  even within the free-tier query/storage limits. A `load_table_from_json` **load job**
+  faces no such restriction, so the full-refetch-and-truncate approach keeps the pipeline on
+  the true no-billing-account free tier. Worth revisiting if the dataset ever grows past
+  "refetch the whole thing daily" being the obviously cheap option.
 
-**Done when:** `raw_treasury_par_yields` in BigQuery holds a multi-year history and a
-re-run of the script adds only new dates.
+**Done when:** `raw_treasury_par_yields` in BigQuery holds the full multi-year history after
+a run, without requiring a billing account on the GCP project.
 
 ## Phase 2 — Transformation (dbt-core → BigQuery)
 

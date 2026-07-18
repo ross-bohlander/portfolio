@@ -10,16 +10,14 @@ export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 export DBT_PROFILES_DIR=$(pwd)/dbt       # so dbt finds profiles.yml here instead of ~/.dbt
 ```
 
-## One-time backfill
+## Refresh (what the scheduled workflow runs)
+
+Every run re-fetches the full history (1990-present, a few thousand rows) and does a
+single `WRITE_TRUNCATE` load into the raw table — a load job, not a MERGE, so it needs no
+GCP billing account attached to the project.
 
 ```
-python ingest/treasury_ingest.py --mode backfill --start-year 1990
-```
-
-## Daily refresh (what the scheduled workflow runs)
-
-```
-python ingest/treasury_ingest.py --mode incremental
+python ingest/treasury_ingest.py
 cd dbt && dbt build && cd ..
 python export/export_marts.py
 ```
@@ -27,5 +25,5 @@ python export/export_marts.py
 ## Testing without BigQuery credentials
 
 ```
-python ingest/treasury_ingest.py --mode incremental --dry-run
+python ingest/treasury_ingest.py --dry-run
 ```

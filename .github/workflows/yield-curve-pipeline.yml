@@ -6,13 +6,8 @@ on:
     - cron: '0 22 * * 1-5'
   workflow_dispatch:
     inputs:
-      mode:
-        description: Ingestion mode. Use "backfill" once to load history, "incremental" for the normal daily refresh.
-        type: choice
-        options: [incremental, backfill]
-        default: incremental
       start_year:
-        description: First year to fetch when mode=backfill.
+        description: First year to fetch (every run re-fetches full history through today).
         type: string
         default: '1990'
 
@@ -48,10 +43,7 @@ jobs:
         run: echo '${{ secrets.GCP_SA_KEY }}' > gcp-key.json
 
       - name: Ingest Treasury observations
-        run: >
-          python ingest/treasury_ingest.py
-          --mode ${{ github.event.inputs.mode || 'incremental' }}
-          --start-year ${{ github.event.inputs.start_year || '1990' }}
+        run: python ingest/treasury_ingest.py --start-year ${{ github.event.inputs.start_year || '1990' }}
 
       - name: dbt build
         working-directory: pipeline/dbt
