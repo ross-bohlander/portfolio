@@ -23,6 +23,13 @@ const ATTRIBUTE_KEYS = [
   'jumping',
 ] as const satisfies readonly (keyof AttributeRow)[];
 
+function humanize(key: string): string {
+  return key
+    .split('_')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 const ATTRIBUTE_COLORS = [
   '#3f51b5',
   '#ff4081',
@@ -60,6 +67,15 @@ export class AttributeTrendChart {
     maintainAspectRatio: false,
     plugins: {
       title: { display: true, text: 'Attribute Progression' },
+      legend: {
+        position: 'right',
+        labels: {
+          boxWidth: 12,
+          boxHeight: 12,
+          padding: 10,
+          font: { size: 11 },
+        },
+      },
     },
     scales: {
       y: { beginAtZero: true, suggestedMax: 20 },
@@ -75,7 +91,7 @@ export class AttributeTrendChart {
     return {
       labels: rows.map((row) => new Date(row.loaded_at).toLocaleDateString()),
       datasets: ATTRIBUTE_KEYS.map((key, i) => ({
-        label: key,
+        label: humanize(key),
         data: rows.map((row) => row[key]),
         borderColor: ATTRIBUTE_COLORS[i % ATTRIBUTE_COLORS.length],
         tension: 0.2,
