@@ -41,8 +41,8 @@ export class AgeDistributionChart {
     return {
       title: { text: 'Age Distribution: Squad vs First Team', left: 'center', textStyle: { fontSize: 13 } },
       tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-      legend: { top: 24, textStyle: { fontSize: 11 } },
-      grid: { left: 40, right: 24, top: 70, bottom: 50 },
+      legend: { bottom: 0, textStyle: { fontSize: 11 } },
+      grid: { left: 40, right: 24, top: 40, bottom: 80 },
       xAxis: { type: 'category', data: CATEGORY_ORDER, axisLabel: { rotate: 20 } },
       yAxis: { type: 'value', minInterval: 1 },
       series: [
