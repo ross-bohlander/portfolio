@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { combineLatest, map } from 'rxjs';
 
@@ -22,6 +22,11 @@ export class SquadDashboard {
 
   protected readonly nationalities = toSignal(this.squadData.getNationalities(), { initialValue: [] });
   protected readonly nationalitiesFirstTeam = toSignal(this.squadData.getNationalities(true), { initialValue: [] });
+
+  protected readonly showFirstTeamOnly = signal(false);
+  protected readonly activeNationalities = computed(() =>
+    this.showFirstTeamOnly() ? this.nationalitiesFirstTeam() : this.nationalities()
+  );
 
   protected readonly ageDistribution = toSignal(this.squadData.getAgeDistribution(), { initialValue: [] });
   protected readonly ageDistributionFirstTeam = toSignal(this.squadData.getAgeDistribution(true), { initialValue: [] });

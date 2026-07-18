@@ -1,0 +1,47 @@
+.projects-page {
+  padding: 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0.6rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  border-bottom: 2px solid transparent;
+
+  &.active {
+    border-bottom-color: var(--color-accent, #3f51b5);
+    font-weight: 600;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+
+  li {
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent, #3f51b5) 15%, transparent);
+    font-size: 0.85rem;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}

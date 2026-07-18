@@ -1,0 +1,32 @@
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-card-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  button {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+
+    &.active {
+      background: var(--color-accent, #3f51b5);
+      color: white;
+      border-color: transparent;
+    }
+  }
+}
+
+.compliance h2 {
+  margin-bottom: 0.75rem;
+}

@@ -1,5 +1,43 @@
-<!-- TODO: tab list, one button per item in `projects`, toggling activeSlug() -->
-<!-- TODO: detail panel for the project matching activeSlug() -->
-<section>
+<section class="projects-page">
   <h1>Projects</h1>
+
+  <div class="tabs" role="tablist">
+    @for (project of projects; track project.slug) {
+      <button
+        type="button"
+        role="tab"
+        class="tab"
+        [class.active]="project.slug === activeSlug()"
+        [attr.aria-selected]="project.slug === activeSlug()"
+        (click)="selectProject(project.slug)"
+      >
+        {{ project.name }}
+      </button>
+    }
+  </div>
+
+  @if (activeProject(); as project) {
+    <article class="project-detail">
+      <p class="summary">{{ project.summary }}</p>
+
+      <ul class="tags">
+        @for (tag of project.tags; track tag) {
+          <li>{{ tag }}</li>
+        }
+      </ul>
+
+      <div class="links">
+        @if (project.repoUrl) {
+          <a [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
+        }
+        @if (project.liveUrl) {
+          <a [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
+        }
+      </div>
+
+      @if (project.slug === 'squad-planner') {
+        <app-squad-dashboard />
+      }
+    </article>
+  }
 </section>

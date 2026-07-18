@@ -1,0 +1,38 @@
+.empty-state {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.violations {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.tier-over_30 .badge {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.tier-over_32 .badge {
+  background: #ffe0b2;
+  color: #8a4b00;
+}
+
+.tier-over_34 .badge {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}

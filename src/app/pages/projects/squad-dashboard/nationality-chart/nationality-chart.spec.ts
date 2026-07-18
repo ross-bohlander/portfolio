@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 import { NationalityChart } from './nationality-chart';
 
@@ -9,6 +10,7 @@ describe('NationalityChart', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NationalityChart],
+      providers: [provideCharts(withDefaultRegisterables())],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NationalityChart);

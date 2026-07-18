@@ -1,13 +1,21 @@
 <section class="insights">
-  <app-nationality-chart [data]="nationalities()" />
+  <div class="chart-card">
+    <div class="chart-card-header">
+      <button type="button" [class.active]="!showFirstTeamOnly()" (click)="showFirstTeamOnly.set(false)">
+        Full Squad
+      </button>
+      <button type="button" [class.active]="showFirstTeamOnly()" (click)="showFirstTeamOnly.set(true)">
+        First Team
+      </button>
+    </div>
+    <app-nationality-chart [data]="activeNationalities()" />
+  </div>
+
   <app-age-distribution-chart [squadData]="ageDistribution()" [firstTeamData]="ageDistributionFirstTeam()" />
   <app-attribute-trend-chart [data]="attributes()" />
 </section>
 
 <section class="compliance">
+  <h2>Board Compliance</h2>
   <app-compliance-panel [violations]="complianceViolations()" />
 </section>
-
-<!-- TODO: nationalitiesFirstTeam() is fetched but not used yet -- decide whether
-     it feeds app-nationality-chart too (e.g. a squad/first-team toggle) or a
-     second chart instance. -->
