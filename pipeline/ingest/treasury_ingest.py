@@ -5,10 +5,12 @@ Source: https://home.treasury.gov/resource-center/data-chart-center/interest-rat
 The feed returns one XML document per calendar year (Atom/OData), with one
 <entry> per business day and one field per maturity (BC_1MONTH .. BC_30YEAR).
 
-Modes:
-  --mode backfill     fetch every year from --start-year through the current year
-  --mode incremental  fetch only the current year (default; cheap daily refresh)
-  --dry-run           parse and print/write JSON locally instead of touching BigQuery
+Every run re-fetches the full history (--start-year through the current year)
+and does a single WRITE_TRUNCATE load into the raw table. The full dataset is
+a few thousand rows, so re-fetching it daily is cheap, and a load job (unlike
+a MERGE) doesn't require a GCP billing account to be attached to the project.
+
+  --dry-run   parse and print/write JSON locally instead of touching BigQuery
 """
 
 import argparse
@@ -101,15 +103,12 @@ def load_to_bigquery(rows: list[dict], project: str, dataset: str) -> None:
     client.create_dataset(bigquery.Dataset(dataset_ref), exists_ok=True)
 
     raw_ref = dataset_ref.table(RAW_TABLE)
-    client.create_table(bigquery.Table(raw_ref, schema=schema), exists_ok=True)
-
-    staging_ref = dataset_ref.table(f"_stg_{RAW_TABLE}_load")
     now = datetime.utcnow().isoformat()
     load_rows = [{**row, "loaded_at": now} for row in rows]
 
     job = client.load_table_from_json(
         load_rows,
-        staging_ref,
+        raw_ref,
         job_config=bigquery.LoadJobConfig(
             schema=schema,
             write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
@@ -117,27 +116,12 @@ def load_to_bigquery(rows: list[dict], project: str, dataset: str) -> None:
     )
     job.result()
 
-    update_cols = ", ".join(f"{col} = source.{col}" for _, col in MATURITY_FIELDS)
-    insert_cols = ", ".join(["curve_date", *[col for _, col in MATURITY_FIELDS], "loaded_at"])
-    insert_vals = ", ".join([f"source.{c}" for c in ["curve_date", *[col for _, col in MATURITY_FIELDS], "loaded_at"]])
-
-    merge_sql = f"""
-        MERGE `{project}.{dataset}.{RAW_TABLE}` AS target
-        USING `{project}.{dataset}._stg_{RAW_TABLE}_load` AS source
-        ON target.curve_date = source.curve_date
-        WHEN MATCHED THEN UPDATE SET {update_cols}, loaded_at = source.loaded_at
-        WHEN NOT MATCHED THEN INSERT ({insert_cols}) VALUES ({insert_vals})
-    """
-    client.query(merge_sql).result()
-    client.delete_table(staging_ref, not_found_ok=True)
-
-    print(f"Merged {len(rows)} observations into {project}.{dataset}.{RAW_TABLE}")
+    print(f"Loaded {len(rows)} observations into {project}.{dataset}.{RAW_TABLE}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=["backfill", "incremental"], default="incremental")
-    parser.add_argument("--start-year", type=int, default=1990)
+    parser.add_argument("--start-year", type=int, default=1990, help="First year to fetch (default 1990, when the CMT par-yield series begins)")
     parser.add_argument("--project", default=None, help="GCP project; falls back to BQ_PROJECT env var")
     parser.add_argument("--dataset", default=None, help="BigQuery dataset; falls back to BQ_DATASET env var")
     parser.add_argument("--dry-run", action="store_true", help="Fetch and print/write locally; skip BigQuery entirely")
@@ -145,9 +129,7 @@ def main() -> None:
     args = parser.parse_args()
 
     current_year = date.today().year
-    start_year = args.start_year if args.mode == "backfill" else current_year
-
-    rows = fetch_years(start_year, current_year)
+    rows = fetch_years(args.start_year, current_year)
     print(f"Total observations fetched: {len(rows)}")
 
     if args.dry_run:
