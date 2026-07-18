@@ -17,10 +17,20 @@ h1 {
   gap: 32px;
 }
 
-.bio p {
-  color: var(--mat-sys-on-surface-variant);
-  font: var(--mat-sys-body-large);
-  line-height: 1.7;
+.bio {
+  p {
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-large);
+    line-height: 1.7;
+  }
+
+  a {
+    margin-top: 8px;
+
+    mat-icon {
+      margin-right: 4px;
+    }
+  }
 }
 
 .skill-card {

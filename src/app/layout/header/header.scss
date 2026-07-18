@@ -8,7 +8,7 @@
 .toolbar-inner {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
 }
@@ -20,7 +20,6 @@
   font: var(--mat-sys-title-medium);
   color: var(--mat-sys-on-surface);
   text-decoration: none;
-  margin-right: auto;
 
   mat-icon {
     color: var(--mat-sys-primary);
@@ -29,12 +28,4 @@
 
 nav[mat-tab-nav-bar] {
   --mat-tab-header-inactive-label-text-color: var(--mat-sys-on-surface-variant);
-}
-
-.resume-link {
-  flex-shrink: 0;
-
-  mat-icon {
-    margin-right: 4px;
-  }
 }
