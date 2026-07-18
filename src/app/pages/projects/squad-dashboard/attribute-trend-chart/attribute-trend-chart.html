@@ -7,6 +7,4 @@
   </mat-select>
 </mat-form-field>
 
-<div class="chart-wrapper">
-  <canvas baseChart [type]="chartType" [data]="chartData()" [options]="chartOptions"></canvas>
-</div>
+<div echarts class="chart-wrapper" [options]="initOptions" [merge]="chartOption()"></div>

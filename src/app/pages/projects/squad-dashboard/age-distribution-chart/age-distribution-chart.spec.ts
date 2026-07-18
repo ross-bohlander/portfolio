@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { provideEchartsCore } from 'ngx-echarts';
 
 import { AgeDistributionChart } from './age-distribution-chart';
+import { installResizeObserverStub } from '../../../../shared/testing/resize-observer-stub';
+
+installResizeObserverStub();
 
 describe('AgeDistributionChart', () => {
   let component: AgeDistributionChart;
@@ -10,7 +13,7 @@ describe('AgeDistributionChart', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AgeDistributionChart],
-      providers: [provideCharts(withDefaultRegisterables())],
+      providers: [provideEchartsCore({ echarts: () => import('echarts') })],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AgeDistributionChart);

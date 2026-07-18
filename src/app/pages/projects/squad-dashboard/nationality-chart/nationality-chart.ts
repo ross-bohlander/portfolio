@@ -1,47 +1,42 @@
 import { Component, computed, input } from '@angular/core';
-import { ChartConfiguration, ChartData } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import type { EChartsOption } from 'echarts';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 import { NationalityRow } from '../../../../shared/models/squad-data.model';
 
 @Component({
   selector: 'app-nationality-chart',
-  imports: [BaseChartDirective],
+  imports: [NgxEchartsDirective],
   templateUrl: './nationality-chart.html',
   styleUrl: './nationality-chart.scss',
 })
 export class NationalityChart {
   readonly data = input.required<NationalityRow[]>();
 
-  protected readonly chartType = 'bar' as const;
+  protected readonly chartHeight = computed(() => Math.max(this.data().length * 24, 200));
 
-  protected readonly chartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: true,
-    maintainAspectRatio: false,
-    indexAxis: 'y',
-    plugins: {
-      legend: { display: false },
-      title: { display: true, text: 'Nationality Breakdown' },
-    },
-    scales: {
-      x: { beginAtZero: true, ticks: { precision: 0 } },
-    },
-  };
+  // Stable reference for [options] (init-only); reactive updates go through
+  // [merge] to avoid a create-vs-update race in ngx-echarts.
+  protected readonly initOptions: EChartsOption = {};
 
-  protected readonly chartData = computed<ChartData<'bar'>>(() => {
+  protected readonly chartOption = computed<EChartsOption>(() => {
     const sorted = [...this.data()].sort((a, b) => b.count - a.count);
 
     return {
-      labels: sorted.map((row) => row.nationality),
-      datasets: [
+      title: { text: 'Nationality Breakdown', left: 'center', textStyle: { fontSize: 13 } },
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      grid: { left: 60, right: 24, top: 40, bottom: 30 },
+      xAxis: { type: 'value', min: 0 },
+      yAxis: { type: 'category', data: sorted.map((row) => row.nationality), inverse: true },
+      series: [
         {
-          label: 'Players',
+          name: 'Players',
+          type: 'bar',
           data: sorted.map((row) => row.count),
-          backgroundColor: '#3f51b5',
+          color: '#3f51b5',
+          barMaxWidth: 18,
         },
       ],
     };
   });
-
-  protected readonly chartHeight = computed(() => Math.max(this.data().length * 24, 200));
 }

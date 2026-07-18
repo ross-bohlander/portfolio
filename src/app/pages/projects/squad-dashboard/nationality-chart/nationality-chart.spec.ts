@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { provideEchartsCore } from 'ngx-echarts';
 
 import { NationalityChart } from './nationality-chart';
+import { installResizeObserverStub } from '../../../../shared/testing/resize-observer-stub';
+
+installResizeObserverStub();
 
 describe('NationalityChart', () => {
   let component: NationalityChart;
@@ -10,7 +13,7 @@ describe('NationalityChart', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NationalityChart],
-      providers: [provideCharts(withDefaultRegisterables())],
+      providers: [provideEchartsCore({ echarts: () => import('echarts') })],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NationalityChart);

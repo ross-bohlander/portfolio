@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
-import { ChartConfiguration, ChartData } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import type { EChartsOption } from 'echarts';
+import { NgxEchartsDirective } from 'ngx-echarts';
 
 import { AgeDistributionRow } from '../../../../shared/models/squad-data.model';
 
@@ -14,7 +14,7 @@ const CATEGORY_ORDER = [
 
 @Component({
   selector: 'app-age-distribution-chart',
-  imports: [BaseChartDirective],
+  imports: [NgxEchartsDirective],
   templateUrl: './age-distribution-chart.html',
   styleUrl: './age-distribution-chart.scss',
 })
@@ -22,24 +22,14 @@ export class AgeDistributionChart {
   readonly squadData = input.required<AgeDistributionRow[]>();
   readonly firstTeamData = input.required<AgeDistributionRow[]>();
 
-  protected readonly chartType = 'bar' as const;
-
-  protected readonly chartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: { display: true, text: 'Age Distribution: Squad vs First Team' },
-    },
-    scales: {
-      x: { stacked: true },
-      y: { stacked: true, beginAtZero: true, ticks: { precision: 0 } },
-    },
-  };
+  // Stable reference for [options] (init-only); reactive updates go through
+  // [merge] to avoid a create-vs-update race in ngx-echarts.
+  protected readonly initOptions: EChartsOption = {};
 
   // First Team is a subset of the full squad, so stacking "everyone else" +
   // "First Team" reproduces the Full Squad total while shading how much of
   // it is First Team.
-  protected readonly chartData = computed<ChartData<'bar'>>(() => {
+  protected readonly chartOption = computed<EChartsOption>(() => {
     const squadBy = new Map(this.squadData().map((row) => [row.age_classification, row.raw_count]));
     const firstTeamBy = new Map(this.firstTeamData().map((row) => [row.age_classification, row.raw_count]));
 
@@ -49,17 +39,26 @@ export class AgeDistributionChart {
     );
 
     return {
-      labels: CATEGORY_ORDER,
-      datasets: [
+      title: { text: 'Age Distribution: Squad vs First Team', left: 'center', textStyle: { fontSize: 13 } },
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      legend: { top: 24, textStyle: { fontSize: 11 } },
+      grid: { left: 40, right: 24, top: 70, bottom: 50 },
+      xAxis: { type: 'category', data: CATEGORY_ORDER, axisLabel: { rotate: 20 } },
+      yAxis: { type: 'value', minInterval: 1 },
+      series: [
         {
-          label: 'Rest of Squad',
+          name: 'Rest of Squad',
+          type: 'bar',
+          stack: 'total',
           data: restOfSquadCounts,
-          backgroundColor: '#c5cae9',
+          color: '#c5cae9',
         },
         {
-          label: 'First Team',
+          name: 'First Team',
+          type: 'bar',
+          stack: 'total',
           data: firstTeamCounts,
-          backgroundColor: '#ff4081',
+          color: '#ff4081',
         },
       ],
     };
