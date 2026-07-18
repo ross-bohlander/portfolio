@@ -1,0 +1,13 @@
+<section class="insights">
+  <app-nationality-chart [data]="nationalities()" />
+  <app-age-distribution-chart [squadData]="ageDistribution()" [firstTeamData]="ageDistributionFirstTeam()" />
+  <app-attribute-trend-chart [data]="attributes()" />
+</section>
+
+<section class="compliance">
+  <app-compliance-panel [violations]="complianceViolations()" />
+</section>
+
+<!-- TODO: nationalitiesFirstTeam() is fetched but not used yet -- decide whether
+     it feeds app-nationality-chart too (e.g. a squad/first-team toggle) or a
+     second chart instance. -->
