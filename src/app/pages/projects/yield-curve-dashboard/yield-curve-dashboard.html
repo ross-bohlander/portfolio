@@ -1,0 +1,28 @@
+<section class="insights">
+  <mat-card appearance="outlined" class="chart-card wide">
+    <mat-card-content>
+      <div class="date-picker">
+        <span class="date-label">{{ selectedIndex() === null ? 'Latest available' : selectedDate() }}</span>
+        <mat-slider [min]="0" [max]="maxIndex()" [step]="1" discrete>
+          <input matSliderThumb [value]="sliderIndex()" (valueChange)="setSelectedIndex($event)" />
+        </mat-slider>
+      </div>
+      <app-yield-curve-chart [points]="displayedCurve()" [dateLabel]="selectedIndex() === null ? '' : selectedDate()" />
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="chart-card wide">
+    <mat-card-content>
+      <app-spread-chart [data]="spread()" />
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section class="curve-detail">
+  <h2>Curve Detail</h2>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <app-curve-table [points]="displayedCurve()" />
+    </mat-card-content>
+  </mat-card>
+</section>

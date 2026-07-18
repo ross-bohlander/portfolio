@@ -15,11 +15,20 @@ h1 {
   margin: 0 0 20px;
 }
 
+.tab-section {
+  margin-bottom: 12px;
+}
+
+.tab-section-label {
+  font: var(--mat-sys-label-medium);
+  color: var(--mat-sys-on-surface-variant);
+  margin: 0 0 4px;
+}
+
 .tabs {
   display: flex;
   gap: 4px;
   border-bottom: 1px solid var(--mat-sys-outline-variant);
-  margin-bottom: 24px;
 }
 
 .tab {
@@ -53,5 +62,14 @@ h1 {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
+  }
+
+  .proprietary-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-small);
+    margin: 0 0 20px;
   }
 }

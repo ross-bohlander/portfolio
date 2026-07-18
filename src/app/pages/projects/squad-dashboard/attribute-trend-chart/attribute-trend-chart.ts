@@ -1,6 +1,8 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { ChartConfiguration, ChartData } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+import type { EChartsOption } from 'echarts';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AttributeRow } from '../../../../shared/models/squad-data.model';
 
@@ -38,9 +40,16 @@ const ATTRIBUTE_COLORS = [
   '#009688',
 ];
 
+function humanize(key: string): string {
+  return key
+    .split('_')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 @Component({
   selector: 'app-attribute-trend-chart',
-  imports: [BaseChartDirective],
+  imports: [NgxEchartsDirective, MatFormFieldModule, MatSelectModule],
   templateUrl: './attribute-trend-chart.html',
   styleUrl: './attribute-trend-chart.scss',
 })
@@ -51,37 +60,41 @@ export class AttributeTrendChart {
 
   protected readonly selectedPlayer = signal<string>('');
 
-  protected readonly chartType = 'line' as const;
+  // A stable reference bound to [options] so ngx-echarts only initializes
+  // the chart once; all reactive updates flow through [merge] instead,
+  // which avoids a create-vs-update race when chartOption() changes shortly
+  // after init (e.g. once async data arrives).
+  protected readonly initOptions: EChartsOption = {};
 
-  protected readonly chartOptions: ChartConfiguration<'line'>['options'] = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      title: { display: true, text: 'Attribute Progression' },
-    },
-    scales: {
-      y: { beginAtZero: true, suggestedMax: 20 },
-    },
-  };
-
-  protected readonly chartData = computed<ChartData<'line'>>(() => {
+  protected readonly chartOption = computed<EChartsOption>(() => {
     const player = this.selectedPlayer() || this.players()[0] || '';
     const rows = this.data()
       .filter((row) => row.name === player)
       .sort((a, b) => a.loaded_at.localeCompare(b.loaded_at));
 
+    const dates = rows.map((row) => new Date(row.loaded_at).toLocaleDateString());
+
     return {
-      labels: rows.map((row) => new Date(row.loaded_at).toLocaleDateString()),
-      datasets: ATTRIBUTE_KEYS.map((key, i) => ({
-        label: key,
+      title: { text: 'Attribute Progression', left: 'center', textStyle: { fontSize: 13 } },
+      tooltip: { trigger: 'axis' },
+      legend: {
+        type: 'scroll',
+        orient: 'vertical',
+        right: 0,
+        top: 'middle',
+        textStyle: { fontSize: 11 },
+      },
+      grid: { left: 40, right: 140, top: 40, bottom: 30 },
+      xAxis: { type: 'category', data: dates },
+      yAxis: { type: 'value', min: 0, max: 20 },
+      series: ATTRIBUTE_KEYS.map((key, i) => ({
+        name: humanize(key),
+        type: 'line',
+        smooth: true,
+        symbolSize: 6,
         data: rows.map((row) => row[key]),
-        borderColor: ATTRIBUTE_COLORS[i % ATTRIBUTE_COLORS.length],
-        tension: 0.2,
+        color: ATTRIBUTE_COLORS[i % ATTRIBUTE_COLORS.length],
       })),
     };
   });
-
-  protected onPlayerChange(event: Event): void {
-    this.selectedPlayer.set((event.target as HTMLSelectElement).value);
-  }
 }

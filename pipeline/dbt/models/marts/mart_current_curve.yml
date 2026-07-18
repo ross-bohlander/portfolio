@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: mart_current_curve
+    description: The full par-yield curve for the most recent observation date. Powers the primary curve chart.
+    columns:
+      - name: curve_date
+        tests:
+          - not_null
+      - name: maturity_label
+        description: Human-readable maturity, e.g. "3M", "10Y".
+        tests:
+          - not_null
+      - name: maturity_months
+        description: Maturity expressed in months, for numeric x-axis plotting.
+        tests:
+          - not_null
+      - name: yield_pct
+        description: Par yield, percent.
+        tests:
+          - not_null

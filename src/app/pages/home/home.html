@@ -3,7 +3,7 @@
     <div>
       <h1>Software engineer, building data pipelines end to end.</h1>
       <p class="lede">
-        Fixed-income engineering by day. Here I document personal projects where I take raw data
+        Hi there - I'm Ross. Here I document personal projects where I take raw data
         and turn it into something queryable, tested, and worth looking at.
       </p>
       <div class="btn-row">
@@ -21,28 +21,5 @@
         <div class="status-row"><span class="k">Rows loaded</span><span class="v">83</span></div>
       </mat-card-content>
     </mat-card>
-  </section>
-
-  <section class="pipeline">
-    <p class="eyebrow">Pipeline</p>
-    <h2>Source to screen</h2>
-
-    <div class="stepper">
-      @for (step of pipelineSteps; track step.label; let last = $last) {
-        <div class="step">
-          <div class="step-circle" [class.off]="!step.done">
-            @if (step.done) {
-              <mat-icon inline>check</mat-icon>
-            } @else {
-              {{ $index + 1 }}
-            }
-          </div>
-          <span class="step-label">{{ step.label }}</span>
-        </div>
-        @if (!last) {
-          <div class="step-connector"></div>
-        }
-      }
-    </div>
   </section>
 </div>

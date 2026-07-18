@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: mart_spread_10y_2y
+    description: 10Y-2Y and 10Y-3M term spread over time — the standard inversion/recession-signal series. Excludes dates before the 2-year note or 10-year note has a quoted yield.
+    columns:
+      - name: curve_date
+        tests:
+          - not_null
+      - name: yield_3m
+        description: 3-month par yield, percent. Null before the 3-month bill existed in the published curve.
+      - name: yield_2y
+        description: 2-year par yield, percent.
+        tests:
+          - not_null
+      - name: yield_10y
+        description: 10-year par yield, percent.
+        tests:
+          - not_null
+      - name: spread_10y_2y
+        description: 10-year yield minus 2-year yield, percentage points. Negative values indicate an inverted curve.
+        tests:
+          - not_null
+      - name: spread_10y_3m
+        description: 10-year yield minus 3-month yield, percentage points. Null where yield_3m is null.

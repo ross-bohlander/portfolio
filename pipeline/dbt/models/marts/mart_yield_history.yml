@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: mart_yield_history
+    description: Full long-form history of the par-yield curve, one row per (curve_date, maturity). Powers the time-series / animated curve view.
+    columns:
+      - name: curve_date
+        tests:
+          - not_null
+      - name: maturity_label
+        tests:
+          - not_null
+      - name: maturity_months
+        tests:
+          - not_null
+      - name: yield_pct
+        tests:
+          - not_null

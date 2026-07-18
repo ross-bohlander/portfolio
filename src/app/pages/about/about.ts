@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 interface SkillGroup {
   category: string;
@@ -9,7 +11,7 @@ interface SkillGroup {
 
 @Component({
   selector: 'app-about',
-  imports: [MatCardModule, MatChipsModule],
+  imports: [MatCardModule, MatChipsModule, MatButtonModule, MatIconModule],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
@@ -18,7 +20,7 @@ export class About {
     { category: 'Languages & Data', items: ['Python', 'SQL (T-SQL)', 'pandas', 'Perl'] },
     {
       category: 'Data Engineering',
-      items: ['ETL', 'Snowflake', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
+      items: ['ETL/ELT', 'Snowflake', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
     },
     {
       category: 'DevOps & Orchestration',
@@ -27,5 +29,4 @@ export class About {
     { category: 'Reporting & Analytics', items: ['Tableau', 'Power BI', 'Matplotlib', 'Excel'] },
   ];
 
-  protected readonly currentlyBuilding: string[] = ['Angular', 'FRED API'];
-}
+  protected readonly currentlyBuilding: string[] = ['Angular', 'databricks'];}
