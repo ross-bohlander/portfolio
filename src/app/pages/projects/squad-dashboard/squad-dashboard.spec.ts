@@ -3,19 +3,19 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
-import { Projects } from './projects';
+import { SquadDashboard } from './squad-dashboard';
 
-describe('Projects', () => {
-  let component: Projects;
-  let fixture: ComponentFixture<Projects>;
+describe('SquadDashboard', () => {
+  let component: SquadDashboard;
+  let fixture: ComponentFixture<SquadDashboard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Projects],
+      imports: [SquadDashboard],
       providers: [provideHttpClient(), provideHttpClientTesting(), provideCharts(withDefaultRegisterables())],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Projects);
+    fixture = TestBed.createComponent(SquadDashboard);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

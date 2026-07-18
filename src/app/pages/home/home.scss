@@ -1,0 +1,128 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  padding: 56px 0 40px;
+  align-items: center;
+}
+
+h1 {
+  font: var(--mat-sys-display-small);
+  margin: 0 0 16px;
+}
+
+.lede {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-large);
+  max-width: 48ch;
+  margin: 0 0 24px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+}
+
+.status-card {
+  .status-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: var(--mat-sys-label-large);
+    color: var(--mat-sys-on-surface-variant);
+    margin: 0 0 14px;
+
+    mat-icon {
+      color: var(--mat-sys-primary);
+    }
+  }
+
+  .status-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    font: var(--mat-sys-body-small);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .k {
+      color: var(--mat-sys-on-surface-variant);
+    }
+
+    .v {
+      font-weight: 500;
+    }
+  }
+}
+
+.pipeline {
+  padding: 32px 0;
+}
+
+.eyebrow {
+  font: var(--mat-sys-label-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mat-sys-primary);
+  margin: 0 0 6px;
+}
+
+h2 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 20px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 96px;
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--mat-sys-label-medium);
+
+  &.off {
+    background: var(--mat-sys-surface-variant);
+    color: var(--mat-sys-on-surface-variant);
+  }
+}
+
+.step-label {
+  font: var(--mat-sys-label-small);
+  color: var(--mat-sys-on-surface-variant);
+  text-align: center;
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--mat-sys-outline-variant);
+  min-width: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

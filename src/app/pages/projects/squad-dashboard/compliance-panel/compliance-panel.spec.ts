@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 
-import { Home } from './home';
+import { CompliancePanel } from './compliance-panel';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('CompliancePanel', () => {
+  let component: CompliancePanel;
+  let fixture: ComponentFixture<CompliancePanel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home],
-      providers: [provideRouter([])],
+      imports: [CompliancePanel],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(CompliancePanel);
+    fixture.componentRef.setInput('violations', []);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

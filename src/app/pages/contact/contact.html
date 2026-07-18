@@ -1,4 +1,62 @@
-<!-- TODO: contact links (email, LinkedIn, GitHub) or a form -->
-<section>
-  <h1>Contact</h1>
-</section>
+<div class="page-wrap">
+  <section>
+    <p class="eyebrow">Contact</p>
+    <h1>Get in touch</h1>
+
+    <mat-card appearance="outlined" class="contact-card">
+      <mat-card-content>
+        @for (link of links; track link.label) {
+          <a class="contact-row" [href]="link.href" target="_blank" rel="noopener">
+            <mat-icon>{{ link.icon }}</mat-icon>
+            <span>{{ link.label }}</span>
+          </a>
+        }
+
+        @if (status() === 'success') {
+          <p class="form-success">
+            <mat-icon>check_circle</mat-icon>
+            Thanks — I'll get back to you soon.
+          </p>
+        } @else {
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Your name" />
+              @if (form.controls.name.invalid && form.controls.name.touched) {
+                <mat-error>Name is required</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="you@company.com" />
+              @if (form.controls.email.invalid && form.controls.email.touched) {
+                <mat-error>Enter a valid email</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Message</mat-label>
+              <textarea matInput formControlName="message" placeholder="What's on your mind" rows="4"></textarea>
+              @if (form.controls.message.invalid && form.controls.message.touched) {
+                <mat-error>Message is required</mat-error>
+              }
+            </mat-form-field>
+
+            @if (status() === 'error') {
+              <p class="form-error">Something went wrong — try again, or email me directly.</p>
+            }
+
+            <button mat-flat-button type="submit" [disabled]="status() === 'submitting'">
+              @if (status() === 'submitting') {
+                <mat-spinner diameter="20" />
+              } @else {
+                Send message
+              }
+            </button>
+          </form>
+        }
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>
