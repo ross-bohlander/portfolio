@@ -18,7 +18,7 @@ export class About {
     { category: 'Languages & Data', items: ['Python', 'SQL (T-SQL)', 'pandas', 'Perl'] },
     {
       category: 'Data Engineering',
-      items: ['ETL', 'Snowflake', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
+      items: ['ETL/ELT', 'Snowflake', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
     },
     {
       category: 'DevOps & Orchestration',
@@ -27,5 +27,4 @@ export class About {
     { category: 'Reporting & Analytics', items: ['Tableau', 'Power BI', 'Matplotlib', 'Excel'] },
   ];
 
-  protected readonly currentlyBuilding: string[] = ['Angular', 'FRED API'];
-}
+  protected readonly currentlyBuilding: string[] = ['Angular', 'databricks'];}

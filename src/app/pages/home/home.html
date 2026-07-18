@@ -22,27 +22,4 @@
       </mat-card-content>
     </mat-card>
   </section>
-
-  <section class="pipeline">
-    <p class="eyebrow">Pipeline</p>
-    <h2>Source to screen</h2>
-
-    <div class="stepper">
-      @for (step of pipelineSteps; track step.label; let last = $last) {
-        <div class="step">
-          <div class="step-circle" [class.off]="!step.done">
-            @if (step.done) {
-              <mat-icon inline>check</mat-icon>
-            } @else {
-              {{ $index + 1 }}
-            }
-          </div>
-          <span class="step-label">{{ step.label }}</span>
-        </div>
-        @if (!last) {
-          <div class="step-connector"></div>
-        }
-      }
-    </div>
-  </section>
 </div>
