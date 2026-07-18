@@ -1,11 +1,11 @@
-<label class="player-picker">
-  Player:
-  <select (change)="onPlayerChange($event)">
+<mat-form-field appearance="outline" class="player-picker">
+  <mat-label>Player</mat-label>
+  <mat-select [value]="selectedPlayer() || players()[0]" (selectionChange)="selectedPlayer.set($event.value)">
     @for (player of players(); track player) {
-      <option [value]="player" [selected]="player === (selectedPlayer() || players()[0])">{{ player }}</option>
+      <mat-option [value]="player">{{ player }}</mat-option>
     }
-  </select>
-</label>
+  </mat-select>
+</mat-form-field>
 
 <div class="chart-wrapper">
   <canvas baseChart [type]="chartType" [data]="chartData()" [options]="chartOptions"></canvas>

@@ -1,6 +1,8 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AttributeRow } from '../../../../shared/models/squad-data.model';
 
@@ -40,7 +42,7 @@ const ATTRIBUTE_COLORS = [
 
 @Component({
   selector: 'app-attribute-trend-chart',
-  imports: [BaseChartDirective],
+  imports: [BaseChartDirective, MatFormFieldModule, MatSelectModule],
   templateUrl: './attribute-trend-chart.html',
   styleUrl: './attribute-trend-chart.scss',
 })
@@ -80,8 +82,4 @@ export class AttributeTrendChart {
       })),
     };
   });
-
-  protected onPlayerChange(event: Event): void {
-    this.selectedPlayer.set((event.target as HTMLSelectElement).value);
-  }
 }

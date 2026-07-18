@@ -1,11 +1,7 @@
 .player-picker {
   display: block;
-  margin-bottom: 0.75rem;
-
-  select {
-    margin-left: 0.5rem;
-    font: inherit;
-  }
+  margin-bottom: 0.5rem;
+  max-width: 280px;
 }
 
 .chart-wrapper {
