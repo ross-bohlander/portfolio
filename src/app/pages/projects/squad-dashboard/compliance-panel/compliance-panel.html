@@ -1,0 +1,24 @@
+@if (rows().length === 0) {
+  <p class="empty-state">No compliance violations in the current squad.</p>
+} @else {
+  <table class="violations">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Contract Length</th>
+        <th>Rule Violated</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.name + row.tier) {
+        <tr [class]="'tier-' + row.tier">
+          <td>{{ row.name }}</td>
+          <td>{{ row.age }}</td>
+          <td>{{ row.contractYears }} yrs</td>
+          <td><span class="badge">{{ row.ruleLabel }}</span></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

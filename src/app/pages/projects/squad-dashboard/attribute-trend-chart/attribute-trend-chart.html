@@ -1,0 +1,12 @@
+<label class="player-picker">
+  Player:
+  <select (change)="onPlayerChange($event)">
+    @for (player of players(); track player) {
+      <option [value]="player" [selected]="player === (selectedPlayer() || players()[0])">{{ player }}</option>
+    }
+  </select>
+</label>
+
+<div class="chart-wrapper">
+  <canvas baseChart [type]="chartType" [data]="chartData()" [options]="chartOptions"></canvas>
+</div>

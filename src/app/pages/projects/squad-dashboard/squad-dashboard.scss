@@ -1,0 +1,19 @@
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 20px 0 32px;
+}
+
+.chart-card.wide {
+  grid-column: 1 / -1;
+}
+
+.chart-card-header {
+  margin-bottom: 12px;
+}
+
+.compliance h2 {
+  font: var(--mat-sys-title-medium);
+  margin: 0 0 12px;
+}

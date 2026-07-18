@@ -1,0 +1,34 @@
+<section class="insights">
+  <mat-card appearance="outlined" class="chart-card">
+    <mat-card-content>
+      <div class="chart-card-header">
+        <mat-button-toggle-group [value]="showFirstTeamOnly() ? 'first' : 'squad'" aria-label="Squad scope">
+          <mat-button-toggle value="squad" (click)="showFirstTeamOnly.set(false)">Full Squad</mat-button-toggle>
+          <mat-button-toggle value="first" (click)="showFirstTeamOnly.set(true)">First Team</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <app-nationality-chart [data]="activeNationalities()" />
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="chart-card">
+    <mat-card-content>
+      <app-age-distribution-chart [squadData]="ageDistribution()" [firstTeamData]="ageDistributionFirstTeam()" />
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="chart-card wide">
+    <mat-card-content>
+      <app-attribute-trend-chart [data]="attributes()" />
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section class="compliance">
+  <h2>Board Compliance</h2>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <app-compliance-panel [violations]="complianceViolations()" />
+    </mat-card-content>
+  </mat-card>
+</section>

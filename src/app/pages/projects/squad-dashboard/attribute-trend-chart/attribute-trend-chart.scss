@@ -1,0 +1,15 @@
+.player-picker {
+  display: block;
+  margin-bottom: 0.75rem;
+
+  select {
+    margin-left: 0.5rem;
+    font: inherit;
+  }
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
