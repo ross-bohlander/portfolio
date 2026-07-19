@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_squad_roster
+    description: One row per player, cleaned out of the RAW_DATA VARIANT column. Salary, Transfer Value, Apps, Goals, and Assists are parsed out of their raw display-string formats.
+    columns:
+      - name: uid
+        description: Player unique ID from the game export.
+        tests:
+          - not_null
+      - name: salary
+        description: Annual salary, digits-only, parsed from a string like "€5,326,000 p/a".
+      - name: transfer_value_lower
+        description: Lower bound of the transfer value range, K/M/B suffix expanded to a plain number.
+      - name: transfer_value_upper
+        description: Upper bound of the transfer value range. Equal to transfer_value_lower when the source only gave a single figure.
+      - name: starts
+        description: Appearances as a starter, parsed from the "23" part of an Apps string like "23" or "19 (2)".
+      - name: subs
+        description: Appearances as a substitute, parsed from the "(2)" part of an Apps string like "19 (2)". 0 when absent.
+      - name: goals
+        description: Goals scored. Source uses "-" for none, coalesced to 0.
+      - name: assists
+        description: Assists made. Source uses "-" for none, coalesced to 0.

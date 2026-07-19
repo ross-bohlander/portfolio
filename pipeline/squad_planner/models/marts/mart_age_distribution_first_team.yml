@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: mart_age_distribution_first_team
+    description: Returns a table showing the age distribution of first team players. 
+    columns:
+      - name: age_classification
+        description: "Custom bucket for player age"
+      - name: raw_count
+        description: "Count of players in each bucket"
+      - name: pct_of_squad
+        description: "Percentage of players in each bucket"
+      - name: average_age
+        description: "Average age of players in each bucket"

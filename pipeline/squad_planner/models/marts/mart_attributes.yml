@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: mart_attributes
+    description: Returns a table showing the attributes of all players. Ideally used for tracking attribute improvement over time.
+    columns:
+      - name: name
+        description: ""
+      - name: position
+        description: ""
+      - name: age
+        description: ""
+      - name: passing
+        description: ""
+      - name: vision
+        description: ""
+      - name: decisions
+        description: ""
+      - name: off_the_ball
+        description: ""
+      - name: dribbling
+        description: ""
+      - name: finishing
+        description: ""
+      - name: composure
+        description: ""
+      - name: work_rate
+        description: ""
+      - name: stamina
+        description: ""
+      - name: pace
+        description: ""
+      - name: acceleration
+        description: ""
+      - name: strength
+        description: ""
+      - name: heading
+        description: ""
+      - name: jumping
+        description: ""
+      - name: loaded_at
+        description: One row per player per load — compare across loaded_at to track attribute progression/regression.
