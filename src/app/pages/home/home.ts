@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-interface PipelineStep {
-  label: string;
-  done: boolean;
-}
+import { YieldCurveData } from '../../shared/services/yield-curve-data';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +14,8 @@ interface PipelineStep {
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly pipelineSteps: PipelineStep[] = [
-    { label: 'FM export', done: true },
-    { label: 'Stage', done: true },
-    { label: 'Raw table', done: true },
-    { label: 'dbt staging', done: true },
-    { label: 'dbt marts', done: false },
-    { label: 'Dashboard', done: false },
-  ];
+  private readonly yieldCurveData = inject(YieldCurveData);
+
+  protected readonly currentCurve = toSignal(this.yieldCurveData.getCurrentCurve(), { initialValue: [] });
+  protected readonly asOfDate = computed(() => this.currentCurve()[0]?.curve_date ?? '—');
 }

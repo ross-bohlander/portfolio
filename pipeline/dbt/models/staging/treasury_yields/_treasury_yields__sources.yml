@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: treasury
+    database: "{{ env_var('BQ_PROJECT') }}"
+    schema: "{{ env_var('BQ_DATASET', 'yield_curve') }}"
+    tables:
+      - name: raw_treasury_par_yields
+        description: One row per business day, one column per maturity, landed by treasury_ingest.py from Treasury.gov's daily_treasury_yield_curve XML feed via a MERGE keyed on curve_date.
+        config:
+          loaded_at_field: loaded_at
+          freshness:
+            warn_after: {count: 4, period: day}
+            error_after: {count: 8, period: day}
+        columns:
+          - name: curve_date
+            description: Par-yield-curve observation date.
+          - name: bc_1month
+            description: 1-month par yield, percent.
+          - name: bc_2month
+            description: 2-month par yield, percent.
+          - name: bc_3month
+            description: 3-month par yield, percent.
+          - name: bc_4month
+            description: 4-month par yield, percent.
+          - name: bc_6month
+            description: 6-month par yield, percent.
+          - name: bc_1year
+            description: 1-year par yield, percent.
+          - name: bc_2year
+            description: 2-year par yield, percent.
+          - name: bc_3year
+            description: 3-year par yield, percent.
+          - name: bc_5year
+            description: 5-year par yield, percent.
+          - name: bc_7year
+            description: 7-year par yield, percent.
+          - name: bc_10year
+            description: 10-year par yield, percent.
+          - name: bc_20year
+            description: 20-year par yield, percent.
+          - name: bc_30year
+            description: 30-year par yield, percent. Null 2002-02-18 through 2006-02-08, when Treasury suspended issuing the 30-year bond.
+          - name: loaded_at
+            description: Timestamp of the ingestion run that last wrote/touched this row.

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_treasury_yields
+    description: Long-form reshape of the raw par-yield curve, one row per (curve_date, maturity). Rows with a null yield (e.g. the 30-year bond during its 2002-2006 suspension) are dropped.
+    columns:
+      - name: curve_date
+        description: Par-yield-curve observation date.
+        tests:
+          - not_null
+      - name: maturity_label
+        description: Human-readable maturity, e.g. "3M", "10Y".
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['1M', '2M', '3M', '4M', '6M', '1Y', '2Y', '3Y', '5Y', '7Y', '10Y', '20Y', '30Y']
+      - name: maturity_months
+        description: Maturity expressed in months, for numeric x-axis plotting.
+        tests:
+          - not_null
+      - name: yield_pct
+        description: Par yield, percent.
+        tests:
+          - not_null

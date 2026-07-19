@@ -2,19 +2,40 @@
   <p class="eyebrow">Projects</p>
   <h1>Case studies</h1>
 
-  <div class="tabs" role="tablist">
-    @for (project of projects; track project.slug) {
-      <button
-        type="button"
-        role="tab"
-        class="tab"
-        [class.active]="project.slug === activeSlug()"
-        [attr.aria-selected]="project.slug === activeSlug()"
-        (click)="selectProject(project.slug)"
-      >
-        {{ project.name }}
-      </button>
-    }
+  <div class="tab-section">
+    <p class="tab-section-label">Personal</p>
+    <div class="tabs" role="tablist">
+      @for (project of personalProjects(); track project.slug) {
+        <button
+          type="button"
+          role="tab"
+          class="tab"
+          [class.active]="project.slug === activeSlug()"
+          [attr.aria-selected]="project.slug === activeSlug()"
+          (click)="selectProject(project.slug)"
+        >
+          {{ project.name }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="tab-section">
+    <p class="tab-section-label">Professional</p>
+    <div class="tabs" role="tablist">
+      @for (project of professionalProjects(); track project.slug) {
+        <button
+          type="button"
+          role="tab"
+          class="tab"
+          [class.active]="project.slug === activeSlug()"
+          [attr.aria-selected]="project.slug === activeSlug()"
+          (click)="selectProject(project.slug)"
+        >
+          {{ project.name }}
+        </button>
+      }
+    </div>
   </div>
 
   @if (activeProject(); as project) {
@@ -28,17 +49,27 @@
           }
         </mat-chip-set>
 
-        <div class="links">
-          @if (project.repoUrl) {
-            <a mat-stroked-button [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
-          }
-          @if (project.liveUrl) {
-            <a mat-stroked-button [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
-          }
-        </div>
+        @if (project.category === 'professional') {
+          <p class="proprietary-note">
+            <mat-icon inline>lock</mat-icon>
+            Built at Reams Asset Management — proprietary, code isn't publicly available.
+          </p>
+        } @else {
+          <div class="links">
+            @if (project.repoUrl) {
+              <a mat-stroked-button [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
+            }
+            @if (project.liveUrl) {
+              <a mat-stroked-button [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
+            }
+          </div>
+        }
 
         @if (project.slug === 'squad-planner') {
           <app-squad-dashboard />
+        }
+        @if (project.slug === 'yield-curve') {
+          <app-yield-curve-dashboard />
         }
       </mat-card-content>
     </mat-card>

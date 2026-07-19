@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   summary: string;
   tags: string[];
+  category: 'personal' | 'professional';
   repoUrl?: string;
   liveUrl?: string;
   imageUrl?: string;
