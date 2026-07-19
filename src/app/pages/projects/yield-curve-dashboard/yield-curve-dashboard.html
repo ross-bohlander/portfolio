@@ -3,7 +3,7 @@
     <mat-card-content>
       <div class="date-picker">
         <span class="date-label">{{ selectedIndex() === null ? 'Latest available' : selectedDate() }}</span>
-        <mat-slider [min]="0" [max]="maxIndex()" [step]="1" discrete>
+        <mat-slider [min]="0" [max]="maxIndex()" [step]="1">
           <input matSliderThumb [value]="sliderIndex()" (valueChange)="setSelectedIndex($event)" />
         </mat-slider>
       </div>
