@@ -1,0 +1,7 @@
+target/
+dbt_packages/
+logs/
+dbt_internal_packages/
+
+# Raw game export + intermediate JSON - personal data, not for the public repo
+data/

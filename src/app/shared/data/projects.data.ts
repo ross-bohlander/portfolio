@@ -15,6 +15,7 @@ export const PROJECTS: Project[] = [
     summary: 'Snowflake + dbt ELT pipeline turning a football manager HTML export into nationality, age, and attribute-progression marts.',
     tags: ['Snowflake', 'dbt', 'Python', 'SQL'],
     category: 'personal',
+    repoUrl: 'https://github.com/ross-bohlander/portfolio/tree/develop/pipeline/squad_planner',
   },
   {
     slug: 'accounting-platform-migration',

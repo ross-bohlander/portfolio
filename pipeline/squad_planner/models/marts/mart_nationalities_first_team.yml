@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: mart_nationalities_first_team
+    description: Returns a table showing the nationality distribution of first-team (loosely defined by star players, important players, regular starters, and squad players) players.
+    columns:
+      - name: nationality
+        description: nationality in abbreviated format (German -> GER)
+        tests:
+          - not_null
+      - name: count
+        description: count of nationalities
+      - name: pct_of_squad
+        description: percentage of first team players with this nationality

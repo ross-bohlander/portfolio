@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: mart_contract_rule_over_34
+    description: Returns a table showing the contract violations for players over 34. Any count > 0 is a violation.
+    columns:
+      - name: name
+        description: "Player name"
+      - name: age
+        description: "Player age"
+      - name: agreed_playing_time
+        description: "Agreed playing time"
+      - name: starts
+        description: "Number of starts this season"
+      - name: salary
+        description: "Salary (numeric, in GBP)"
+      - name: contract_begin_date
+        description: "Begin date of contract"
+      - name: contract_end_date
+        description: "Expiration date of contract"

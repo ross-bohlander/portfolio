@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: roster
+    database: squad_planner
+    schema: roster
+    tables:
+      - name: squad_roster_raw
+        description: Raw JSON payloads landed by roster_convert.py via PUT/COPY INTO.
+        columns:
+          - name: raw_data
+            description: Full JSON record for one player row from the exported HTML table.
+          - name: file_name
+            description: Source file name from METADATA$FILENAME at load time.
+          - name: loaded_at
+            description: Load timestamp, defaults to CURRENT_TIMESTAMP().
