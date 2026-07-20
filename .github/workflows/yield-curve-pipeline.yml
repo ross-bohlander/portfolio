@@ -61,5 +61,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ../public/data/mart_current_curve.json ../public/data/mart_yield_history.json ../public/data/mart_spread_10y_2y.json
-          git diff --cached --quiet && echo "No data changes" || git commit -m "Refresh yield curve data"
-          git push
+          if git diff --cached --quiet; then
+            echo "No data changes"
+            exit 0
+          fi
+          git commit -m "Refresh yield curve data"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            echo "Push rejected (attempt $i), retrying after rebase..."
+            sleep $((RANDOM % 5 + 1))
+          done
+          echo "Failed to push after retries" >&2
+          exit 1
