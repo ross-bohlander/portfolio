@@ -1,0 +1,31 @@
+@if (project(); as p) {
+  <div class="page-wrap project-detail-page">
+    <a mat-stroked-button routerLink="/projects" class="back-link">
+      <mat-icon>arrow_back</mat-icon>
+      Back to projects
+    </a>
+    <p class="eyebrow">Projects</p>
+    <h1>{{ p.name }}</h1>
+    <p class="summary">{{ p.summary }}</p>
+
+    @switch (p.slug) {
+      @case ('openaq-aqi') {
+        <app-aqi-dashboard />
+      }
+      @case ('yield-curve') {
+        <app-yield-curve-dashboard />
+      }
+      @case ('squad-planner') {
+        <app-squad-dashboard />
+      }
+    }
+  </div>
+} @else {
+  <div class="page-wrap project-detail-page">
+    <a mat-stroked-button routerLink="/projects" class="back-link">
+      <mat-icon>arrow_back</mat-icon>
+      Back to projects
+    </a>
+    <p>Project not found.</p>
+  </div>
+}

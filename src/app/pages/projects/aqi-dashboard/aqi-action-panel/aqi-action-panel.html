@@ -1,0 +1,11 @@
+@if (visible()) {
+  <div class="action-panel" [style.border-left-color]="band()?.background">
+    <h3>What to do</h3>
+    <p class="cautionary">{{ guidance()!.cautionary_statement }}</p>
+
+    <h4>Sensitive groups</h4>
+    <p class="sensitive">{{ guidance()!.sensitive_groups }}</p>
+
+    <p class="source">Source: EPA Technical Assistance Document for the Reporting of Daily Air Quality (AQI)</p>
+  </div>
+}

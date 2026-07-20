@@ -1,0 +1,26 @@
+.action-panel {
+  border-left: 4px solid transparent;
+  padding-left: 16px;
+}
+
+h3,
+h4 {
+  font: var(--mat-sys-title-medium);
+  margin: 0 0 6px;
+}
+
+h4 {
+  margin-top: 16px;
+}
+
+.cautionary,
+.sensitive {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.source {
+  margin: 16px 0 0;
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+}

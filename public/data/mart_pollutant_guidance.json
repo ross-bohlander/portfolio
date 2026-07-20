@@ -1,0 +1,9 @@
+[
+  {
+    "aqi_category": "GOOD",
+    "max_value": 38.0,
+    "main_pollutant": "pm25",
+    "sensitive_groups": "People with heart or lung disease; older adults; and children, including teenagers. In addition, some minority groups, people with lower incomes, and outdoor workers may experience higher exposure that can worsen underlying health conditions.",
+    "cautionary_statement": "It's a great day to be active outside."
+  }
+]

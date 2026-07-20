@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: openaq
+    meta:
+      external_location: "{name}.json"
+    tables:
+      - name: openaq_extract
+        description: Raw measurement records exported by openaq_ingest.py, one row per sensor per measurement period (day or hour), read directly from the JSON file via DuckDB.
+        columns:
+          - name: sensor
+            description: Pollutant parameter name (pm10, pm25, no2, o3, so2).
+          - name: datetime_from
+            description: UTC start of the measurement period, as an ISO 8601 string.
+          - name: datetime_to
+            description: UTC end of the measurement period, as an ISO 8601 string.
+          - name: value
+            description: Measured value for the period, in the units native to the parameter (e.g. µg/m³ for pm10/pm25).

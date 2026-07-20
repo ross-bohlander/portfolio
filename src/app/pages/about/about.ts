@@ -20,7 +20,7 @@ export class About {
     { category: 'Languages & Data', items: ['Python', 'SQL (T-SQL)', 'pandas', 'Perl'] },
     {
       category: 'Data Engineering',
-      items: ['ETL/ELT', 'Snowflake', 'BigQuery', 'GCP', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
+      items: ['ETL/ELT', 'Snowflake', 'BigQuery', 'DuckDB', 'GCP', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
     },
     {
       category: 'DevOps & Orchestration',

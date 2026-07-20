@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_openaq_measurements
+    description: One row per sensor per measurement period (day or hour), cleaned from the raw OpenAQ API extract.
+    columns:
+      - name: parameter
+        description: Pollutant parameter name (pm10, pm25, no2, o3, so2).
+        tests:
+          - not_null
+      - name: period_start_utc
+        description: UTC start of the measurement period.
+      - name: period_end_utc
+        description: UTC end of the measurement period.
+      - name: value
+        description: Measured value for the period.

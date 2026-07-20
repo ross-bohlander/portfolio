@@ -1,0 +1,19 @@
+<section class="insights">
+  <div class="aqi-card">
+    <app-aqi-summary [daily]="daily()" />
+    <app-aqi-chart [pollutantAqi]="pollutantAqi()" [maxValues]="maxValues()" />
+    @if (meta(); as m) {
+      <p class="last-updated">Last updated {{ m.generated_at | date: 'MM/dd/yyyy HH:mm' }}</p>
+    }
+  </div>
+
+  @if (guidance(); as g) {
+    @if (g.max_value > 100) {
+      <mat-card appearance="outlined" class="chart-card wide">
+        <mat-card-content>
+          <app-aqi-action-panel [guidance]="g" />
+        </mat-card-content>
+      </mat-card>
+    }
+  }
+</section>

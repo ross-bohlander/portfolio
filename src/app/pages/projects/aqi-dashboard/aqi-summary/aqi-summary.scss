@@ -1,0 +1,41 @@
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.aqi-number {
+  // Roboto, same as the rest of the app (site theme + ECharts default) -- Georgia's oldstyle
+  // figures (descenders on digits like 3/5/9) read as uneven/raised at this size.
+  font-family: Roboto, sans-serif;
+  font-size: 4.5rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  // Keeps every digit the same width so 5, 38, and 126 all render at a consistent size/position
+  // instead of the number (and the pill next to it) shifting as the value changes day to day.
+  font-variant-numeric: tabular-nums;
+  min-width: 2.2ch;
+  display: inline-block;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.driven-by {
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.loading {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+}

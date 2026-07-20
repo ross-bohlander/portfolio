@@ -1,0 +1,7 @@
+openaq:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'openaq.duckdb'
+      threads: 4
