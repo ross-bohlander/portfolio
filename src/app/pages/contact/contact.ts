@@ -12,8 +12,10 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdaqggwe';
 
 interface ContactLink {
   icon: string;
+  name: string;
   label: string;
   href: string;
+  copy?: string;
 }
 
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
@@ -39,16 +41,33 @@ export class Contact {
   protected readonly links: ContactLink[] = [
     {
       icon: 'mail',
+      name: 'Email',
       label: 'rbohlander@alumni.iu.edu',
       href: 'mailto:rbohlander@alumni.iu.edu',
+      copy: 'rbohlander@alumni.iu.edu',
     },
-    { icon: 'code', label: 'github.com/ross-bohlander', href: 'https://github.com/ross-bohlander' },
+    {
+      icon: 'code',
+      name: 'GitHub',
+      label: 'github.com/ross-bohlander',
+      href: 'https://github.com/ross-bohlander',
+    },
     {
       icon: 'work',
+      name: 'LinkedIn',
       label: 'linkedin.com/in/ross-bohlander',
       href: 'https://www.linkedin.com/in/ross-bohlander-707232288/',
     },
   ];
+
+  protected readonly copied = signal<string | null>(null);
+
+  protected copy(value: string): void {
+    void navigator.clipboard?.writeText(value).then(() => {
+      this.copied.set(value);
+      setTimeout(() => this.copied.set(null), 1500);
+    });
+  }
 
   protected readonly form = this.fb.nonNullable.group({
     name: ['', Validators.required],

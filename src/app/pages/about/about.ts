@@ -4,11 +4,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-interface SkillGroup {
-  category: string;
-  items: string[];
-}
-
 @Component({
   selector: 'app-about',
   imports: [MatCardModule, MatChipsModule, MatButtonModule, MatIconModule],
@@ -16,17 +11,29 @@ interface SkillGroup {
   styleUrl: './about.scss',
 })
 export class About {
-  protected readonly skillGroups: SkillGroup[] = [
-    { category: 'Languages & Data', items: ['Python', 'SQL (T-SQL)', 'pandas', 'Perl'] },
-    {
-      category: 'Data Engineering',
-      items: ['ETL/ELT', 'Snowflake', 'BigQuery', 'DuckDB', 'GCP', 'dbt', 'SQL Server', 'Data Modeling & Warehousing'],
-    },
-    {
-      category: 'DevOps & Orchestration',
-      items: ['Git', 'Azure DevOps', 'GitHub Actions', 'CI/CD', 'Docker', 'Control-M', 'Linux'],
-    },
-    { category: 'Reporting & Analytics', items: ['Tableau', 'Power BI', 'Matplotlib', 'Excel'] },
+  // Tier 1 — the stack I reach for daily and would stake a project on.
+  protected readonly coreStack: string[] = ['Python', 'SQL (T-SQL)', 'dbt', 'Snowflake', 'BigQuery', 'GitHub Actions'];
+
+  // Tier 2 — tools I've shipped with but wouldn't lead on.
+  protected readonly alsoWorkWith: string[] = [
+    'pandas',
+    'Perl',
+    'ETL/ELT',
+    'GCP',
+    'SQL Server',
+    'DuckDB',
+    'Data modeling',
+    'Git',
+    'Azure DevOps',
+    'CI/CD',
+    'Docker',
+    'Control-M',
+    'Linux',
+    'Tableau',
+    'Power BI',
+    'Matplotlib',
+    'Excel',
   ];
 
-  protected readonly currentlyBuilding: string[] = ['Angular', 'databricks'];}
+  protected readonly currentlyBuilding: string[] = ['Angular', 'Databricks'];
+}
