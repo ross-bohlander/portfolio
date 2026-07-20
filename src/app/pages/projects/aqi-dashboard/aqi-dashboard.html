@@ -1,9 +1,11 @@
 <section class="insights">
   <div class="aqi-card">
-    <app-aqi-summary [daily]="daily()" />
+    <app-aqi-summary [daily]="daily()" [meta]="meta()" />
     <app-aqi-chart [pollutantAqi]="pollutantAqi()" [maxValues]="maxValues()" />
     @if (meta(); as m) {
-      <p class="last-updated">Last updated {{ m.generated_at | date: 'MM/dd/yyyy HH:mm' }}</p>
+      <p class="last-updated" [title]="m.generated_at | date: 'MM/dd/yyyy HH:mm'">
+        Last updated {{ refreshedLabel() }}
+      </p>
     }
   </div>
 
