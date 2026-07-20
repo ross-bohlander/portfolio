@@ -56,7 +56,7 @@ export class Contact {
       icon: 'work',
       name: 'LinkedIn',
       label: 'linkedin.com/in/ross-bohlander',
-      href: 'https://www.linkedin.com/in/ross-bohlander-707232288/',
+      href: 'https://www.linkedin.com/in/ross-bohlander/',
     },
   ];
 
