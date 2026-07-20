@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 import { AqiData } from '../../../shared/services/aqi-data';
+import { relativeTime } from '../../../shared/utils/relative-time';
 import { AqiChart } from './aqi-chart/aqi-chart';
 import { AqiSummary } from './aqi-summary/aqi-summary';
 import { AqiActionPanel } from './aqi-action-panel/aqi-action-panel';
@@ -25,4 +26,9 @@ export class AqiDashboard {
 
   protected readonly daily = computed(() => this.dailyAqi()[0] ?? null);
   protected readonly guidance = computed(() => this.pollutantGuidance()[0] ?? null);
+
+  protected readonly refreshedLabel = computed(() => {
+    const meta = this.meta();
+    return meta ? relativeTime(meta.generated_at) : '';
+  });
 }

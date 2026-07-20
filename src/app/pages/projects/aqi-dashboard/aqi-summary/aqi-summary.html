@@ -5,7 +5,7 @@
       {{ categoryLabel() }}
     </span>
   </div>
-  <p class="driven-by">Driven by {{ mainPollutantLabel() }} · sample, yesterday</p>
+  <p class="driven-by">Driven by {{ mainPollutantLabel() }} · {{ sampleLabel() }}</p>
 } @else {
   <p class="loading">Loading today's AQI…</p>
 }
