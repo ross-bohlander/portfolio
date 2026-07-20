@@ -67,7 +67,7 @@ jobs:
           fi
           git commit -m "Refresh yield curve data"
           for i in 1 2 3 4 5; do
-            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            git pull --rebase --autostash origin "${{ github.ref_name }}" && git push && exit 0
             echo "Push rejected (attempt $i), retrying after rebase..."
             sleep $((RANDOM % 5 + 1))
           done
