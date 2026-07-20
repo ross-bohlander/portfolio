@@ -22,7 +22,22 @@ export class SpreadChart {
 
     return {
       title: { text: '10Y-2Y / 10Y-3M Term Spread', left: 'center', textStyle: { fontSize: 13 } },
-      tooltip: { trigger: 'axis' },
+      tooltip: {
+        trigger: 'axis',
+        formatter: (params) => {
+          const points = Array.isArray(params) ? params : [params];
+          const lines = points
+            .filter((point) => point.value != null)
+            .map((point) => {
+              const raw = point.value as [string, number];
+              return `${point.marker} ${point.seriesName}: <strong>${raw[1].toFixed(2)}</strong>`;
+            })
+            .join('<br/>');
+          const firstValue = points[0]?.value as [string, number] | undefined;
+          const date = firstValue?.[0] ?? '';
+          return `${date}<br/>${lines}`;
+        },
+      },
       legend: { bottom: 0 },
       grid: { left: 50, right: 24, top: 40, bottom: 60 },
       xAxis: { type: 'time' },

@@ -1,0 +1,52 @@
+name: OpenAQ AQI pipeline
+
+on:
+  schedule:
+    # 12:00 UTC (~8am America/Indiana/Indianapolis) — gives OpenAQ/AirNow a
+    # few hours after local midnight to finalize the prior day's readings.
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: openaq-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipeline/openaq
+    env:
+      OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+      DBT_PROFILES_DIR: ${{ github.workspace }}/pipeline/openaq
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r ../requirements.txt
+
+      - name: Ingest OpenAQ measurements
+        run: python openaq_ingest.py
+
+      - name: dbt build
+        run: dbt build
+
+      - name: Export marts to JSON
+        run: python export/export_openaq_marts.py
+
+      - name: Commit refreshed data
+        working-directory: ${{ github.workspace }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/mart_max_values.json public/data/mart_aqi.json public/data/mart_max_aqi.json
+          git diff --cached --quiet && echo "No data changes" || git commit -m "Refresh OpenAQ AQI data"
+          git push

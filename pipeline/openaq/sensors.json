@@ -1,0 +1,102 @@
+{
+  "headers": {
+    "xRatelimitLimit": 60,
+    "xRatelimitRemaining": 59,
+    "xRatelimitUsed": 1,
+    "xRatelimitReset": 60
+  },
+  "meta": {
+    "name": "openaq-api",
+    "website": "/",
+    "page": 1,
+    "limit": 100,
+    "found": 1
+  },
+  "results": [
+    {
+      "id": 221,
+      "name": "Indpls-Washington Pa",
+      "locality": "Indianapolis",
+      "timezone": "America/Indiana/Indianapolis",
+      "country": { "id": 155, "code": "US", "name": "United States" },
+      "owner": { "id": 4, "name": "Unknown Governmental Organization" },
+      "provider": { "id": 119, "name": "AirNow" },
+      "isMobile": false,
+      "isMonitor": true,
+      "instruments": [{ "id": 2, "name": "Government Monitor" }],
+      "sensors": [
+        {
+          "id": 5077870,
+          "name": "co ppm",
+          "parameter": {
+            "id": 8,
+            "name": "co",
+            "units": "ppm",
+            "displayName": "CO"
+          }
+        },
+        {
+          "id": 5077612,
+          "name": "no2 ppm",
+          "parameter": {
+            "id": 7,
+            "name": "no2",
+            "units": "ppm",
+            "displayName": "NO₂"
+          }
+        },
+        {
+          "id": 5077534,
+          "name": "o3 ppm",
+          "parameter": {
+            "id": 10,
+            "name": "o3",
+            "units": "ppm",
+            "displayName": "O₃"
+          }
+        },
+        {
+          "id": 5077715,
+          "name": "pm10 µg/m³",
+          "parameter": {
+            "id": 1,
+            "name": "pm10",
+            "units": "µg/m³",
+            "displayName": "PM10"
+          }
+        },
+        {
+          "id": 5077753,
+          "name": "pm25 µg/m³",
+          "parameter": {
+            "id": 2,
+            "name": "pm25",
+            "units": "µg/m³",
+            "displayName": "PM2.5"
+          }
+        },
+        {
+          "id": 5077595,
+          "name": "so2 ppm",
+          "parameter": {
+            "id": 9,
+            "name": "so2",
+            "units": "ppm",
+            "displayName": "SO₂"
+          }
+        }
+      ],
+      "coordinates": { "latitude": 39.810833, "longitude": -86.114444 },
+      "bounds": [-86.114444, 39.810833, -86.114444, 39.810833],
+      "distance": null,
+      "datetimeFirst": {
+        "utc": "2023-05-07T01:00:00Z",
+        "local": "2023-05-06T21:00:00-04:00"
+      },
+      "datetimeLast": {
+        "utc": "2026-07-19T15:00:00Z",
+        "local": "2026-07-19T11:00:00-04:00"
+      }
+    }
+  ]
+}

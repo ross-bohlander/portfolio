@@ -2,76 +2,47 @@
   <p class="eyebrow">Projects</p>
   <h1>Case studies</h1>
 
-  <div class="tab-section">
-    <p class="tab-section-label">Personal</p>
-    <div class="tabs" role="tablist">
+  <section class="project-section">
+    <div class="section-header">
+      <h2>Personal</h2>
+      <span class="count-badge">{{ personalProjects().length }}</span>
+      <span class="section-subtitle">— live pipelines with public repos</span>
+    </div>
+    <div class="card-grid">
       @for (project of personalProjects(); track project.slug) {
-        <button
-          type="button"
-          role="tab"
-          class="tab"
-          [class.active]="project.slug === activeSlug()"
-          [attr.aria-selected]="project.slug === activeSlug()"
-          (click)="selectProject(project.slug)"
-        >
-          {{ project.name }}
-        </button>
+        <mat-card appearance="outlined" class="project-card">
+          <mat-card-content>
+            <h3>{{ project.name }}</h3>
+            <p class="card-summary">{{ project.shortSummary }}</p>
+            <div class="card-links">
+              @if (project.repoUrl) {
+                <a [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
+              }
+              @if (project.liveUrl) {
+                <a [routerLink]="project.liveUrl">Live</a>
+              }
+            </div>
+          </mat-card-content>
+        </mat-card>
       }
     </div>
-  </div>
+  </section>
 
-  <div class="tab-section">
-    <p class="tab-section-label">Professional</p>
-    <div class="tabs" role="tablist">
+  <section class="project-section">
+    <div class="section-header">
+      <h2>Professional</h2>
+      <span class="count-badge">{{ professionalProjects().length }}</span>
+      <span class="section-subtitle">— production work, proprietary</span>
+    </div>
+    <div class="card-grid">
       @for (project of professionalProjects(); track project.slug) {
-        <button
-          type="button"
-          role="tab"
-          class="tab"
-          [class.active]="project.slug === activeSlug()"
-          [attr.aria-selected]="project.slug === activeSlug()"
-          (click)="selectProject(project.slug)"
-        >
-          {{ project.name }}
-        </button>
+        <mat-card appearance="outlined" class="project-card">
+          <mat-card-content>
+            <h3>{{ project.name }}</h3>
+            <p class="card-summary">{{ project.shortSummary }}</p>
+          </mat-card-content>
+        </mat-card>
       }
     </div>
-  </div>
-
-  @if (activeProject(); as project) {
-    <mat-card appearance="outlined" class="project-detail">
-      <mat-card-content>
-        <p class="summary">{{ project.summary }}</p>
-
-        <mat-chip-set class="tags">
-          @for (tag of project.tags; track tag) {
-            <mat-chip>{{ tag }}</mat-chip>
-          }
-        </mat-chip-set>
-
-        @if (project.category === 'professional') {
-          <p class="proprietary-note">
-            <mat-icon inline>lock</mat-icon>
-            Built at Reams Asset Management — proprietary, code isn't publicly available.
-          </p>
-        } @else {
-          <div class="links">
-            @if (project.repoUrl) {
-              <a mat-stroked-button [href]="project.repoUrl" target="_blank" rel="noopener">Repo</a>
-            }
-            @if (project.liveUrl) {
-              <a mat-stroked-button [href]="project.liveUrl" target="_blank" rel="noopener">Live</a>
-            }
-          </div>
-        }
-
-        @if (project.slug === 'squad-planner') {
-          <app-squad-dashboard />
-        }
-        @if (project.slug === 'yield-curve') {
-          <app-yield-curve-dashboard />
-        }
-      </mat-card-content>
-    </mat-card>
-  }
+  </section>
 </div>

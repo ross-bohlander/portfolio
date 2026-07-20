@@ -1,0 +1,30 @@
+<div class="bars">
+  @for (row of rows(); track row.parameter) {
+    <div class="bar-row">
+      <div class="bar-header">
+        <span class="pollutant-name">
+          {{ row.label }}
+          @if (row.isMainPollutant) {
+            <span class="main-tag">· main pollutant</span>
+          }
+        </span>
+        <span class="aqi-value">{{ row.aqiValue }}</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" [style.width.%]="row.widthPercent" [style.background]="row.color"></div>
+        @for (percent of thresholdPercents(); track percent) {
+          <span class="threshold-line" [style.left.%]="percent"></span>
+        }
+      </div>
+      <p class="raw-value">{{ row.rawText }}</p>
+    </div>
+  }
+</div>
+
+<div class="axis">
+  @for (tick of axisTicks(); track tick.value) {
+    <span>{{ tick.label }}</span>
+  }
+</div>
+
+<p class="co-note">Carbon monoxide (CO) isn't monitored at this station, so it's excluded rather than assumed clean.</p>

@@ -1,0 +1,11 @@
+@if (daily(); as d) {
+  <div class="hero">
+    <span class="aqi-number">{{ d.max_value }}</span>
+    <span class="category-pill" [style.background]="band()?.background" [style.color]="band()?.foreground">
+      {{ categoryLabel() }}
+    </span>
+  </div>
+  <p class="driven-by">Driven by {{ mainPollutantLabel() }} · sample, yesterday</p>
+} @else {
+  <p class="loading">Loading today's AQI…</p>
+}

@@ -28,4 +28,10 @@
 
 nav[mat-tab-nav-bar] {
   --mat-tab-header-inactive-label-text-color: var(--mat-sys-on-surface-variant);
+
+  // Material draws its own short divider under just the tab links (narrower than the header);
+  // the toolbar's full-width box-shadow above already provides that separation.
+  ::ng-deep .mat-mdc-tab-link-container {
+    border-bottom: none;
+  }
 }

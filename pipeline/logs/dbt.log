@@ -1,0 +1,13 @@
+[0m17:27:20.752134 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 17:27:20.916098 | c77bc86e-06e2-4f9c-88bb-49ed20b7277a ==============================
+[0m17:27:20.916098 [info ] [MainThread]: Running with dbt=1.12.0
+[0m17:27:20.916895 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\rdboh\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m17:27:20.925304 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\rdboh\Scripts\portfolio\pipeline\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m17:27:20.926013 [debug] [MainThread]: Command `dbt run` failed at 17:27:20.925894 after 0.25 seconds
+[0m17:27:20.926328 [debug] [MainThread]: Flushing usage events

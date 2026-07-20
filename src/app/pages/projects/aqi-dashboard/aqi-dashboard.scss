@@ -1,0 +1,26 @@
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 20px 0 32px;
+}
+
+// Fixed dark background regardless of site theme: the ColorVision Assist palette (especially
+// the greens/yellows) is calibrated for contrast against a dark backdrop.
+.aqi-card {
+  grid-column: 1 / -1;
+  background: #141414;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.chart-card.wide {
+  grid-column: 1 / -1;
+}
+
+.last-updated {
+  margin: 20px 0 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: right;
+}
