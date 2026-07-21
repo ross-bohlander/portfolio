@@ -11,21 +11,21 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './about.scss',
 })
 export class About {
-  // Tier 1 — the stack I reach for daily and would stake a project on.
-  protected readonly coreStack: string[] = ['Python', 'SQL (T-SQL)', 'dbt', 'Snowflake', 'BigQuery', 'GitHub Actions'];
+  // Tier 1 — the headline tools: proven, production-grade, what I'd lead a project with.
+  protected readonly coreStack: string[] = ['Python', 'SQL (T-SQL)', 'Snowflake', 'SQL Server', 'Git', 'CI/CD'];
 
-  // Tier 2 — tools I've shipped with but wouldn't lead on.
+  // Tier 2 — real, shipped experience; supporting cast rather than headline.
   protected readonly alsoWorkWith: string[] = [
     'pandas',
     'Perl',
+    'dbt',
     'ETL/ELT',
     'GCP',
-    'SQL Server',
+    'BigQuery',
     'DuckDB',
     'Data modeling',
-    'Git',
     'Azure DevOps',
-    'CI/CD',
+    'GitHub Actions',
     'Docker',
     'Control-M',
     'Linux',
