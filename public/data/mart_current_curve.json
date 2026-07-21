@@ -1,80 +1,80 @@
 [
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "1M",
     "maturity_months": 1,
-    "yield_pct": 3.73
+    "yield_pct": 3.72
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "2M",
     "maturity_months": 2,
-    "yield_pct": 3.8
+    "yield_pct": 3.81
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "3M",
     "maturity_months": 3,
-    "yield_pct": 3.85
+    "yield_pct": 3.86
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "4M",
     "maturity_months": 4,
-    "yield_pct": 3.91
+    "yield_pct": 3.93
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "6M",
     "maturity_months": 6,
-    "yield_pct": 3.96
+    "yield_pct": 4.0
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "1Y",
     "maturity_months": 12,
-    "yield_pct": 4.01
+    "yield_pct": 4.03
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "2Y",
     "maturity_months": 24,
-    "yield_pct": 4.18
-  },
-  {
-    "curve_date": "2026-07-17",
-    "maturity_label": "3Y",
-    "maturity_months": 36,
     "yield_pct": 4.21
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
+    "maturity_label": "3Y",
+    "maturity_months": 36,
+    "yield_pct": 4.25
+  },
+  {
+    "curve_date": "2026-07-20",
     "maturity_label": "5Y",
     "maturity_months": 60,
-    "yield_pct": 4.28
+    "yield_pct": 4.33
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "7Y",
     "maturity_months": 84,
-    "yield_pct": 4.4
+    "yield_pct": 4.45
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "10Y",
     "maturity_months": 120,
-    "yield_pct": 4.55
+    "yield_pct": 4.6
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "20Y",
     "maturity_months": 240,
-    "yield_pct": 5.07
+    "yield_pct": 5.12
   },
   {
-    "curve_date": "2026-07-17",
+    "curve_date": "2026-07-20",
     "maturity_label": "30Y",
     "maturity_months": 360,
-    "yield_pct": 5.06
+    "yield_pct": 5.11
   }
 ]
