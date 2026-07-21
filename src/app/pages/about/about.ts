@@ -36,4 +36,8 @@ export class About {
   ];
 
   protected readonly currentlyBuilding: string[] = ['Angular', 'Databricks'];
+
+  protected readonly certifications: { name: string; issuer: string }[] = [
+    { name: 'Snowflake Data Engineering Professional', issuer: 'Snowflake · 2026' },
+  ];
 }

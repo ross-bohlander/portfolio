@@ -79,6 +79,36 @@ mat-chip.pending {
   }
 }
 
+.cert-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  mat-icon {
+    color: var(--mat-sys-primary);
+    flex: none;
+  }
+}
+
+.cert-name {
+  font: var(--mat-sys-body-medium);
+  font-weight: 600;
+  color: var(--mat-sys-on-surface);
+  margin: 0;
+}
+
+.cert-issuer {
+  font: var(--mat-sys-body-small);
+  color: var(--mat-sys-on-surface-variant);
+  margin: 2px 0 0;
+}
+
 @media (max-width: 720px) {
   .about-grid {
     grid-template-columns: 1fr;
