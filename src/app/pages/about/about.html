@@ -53,6 +53,19 @@
               }
             </mat-chip-set>
           </div>
+
+          <div class="skill-group cert-group">
+            <p class="skill-category">Certifications</p>
+            @for (cert of certifications; track cert.name) {
+              <div class="cert-item">
+                <mat-icon>workspace_premium</mat-icon>
+                <div>
+                  <p class="cert-name">{{ cert.name }}</p>
+                  <p class="cert-issuer">{{ cert.issuer }}</p>
+                </div>
+              </div>
+            }
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
