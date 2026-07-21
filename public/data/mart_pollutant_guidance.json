@@ -1,9 +1,9 @@
 [
   {
-    "aqi_category": "UNHEALTHY FOR SENSITIVE",
-    "max_value": 125.0,
+    "aqi_category": "MODERATE",
+    "max_value": 99.0,
     "main_pollutant": "pm25",
     "sensitive_groups": "People with heart or lung disease; older adults; and children, including teenagers. In addition, some minority groups, people with lower incomes, and outdoor workers may experience higher exposure that can worsen underlying health conditions.",
-    "cautionary_statement": "Sensitive groups: Make outdoor activities shorter and less intense. It's OK to be active outdoors but take more breaks. Watch for symptoms such as coughing or shortness of breath. People with asthma: Follow your asthma action plan and keep quick relief medicine handy. People with heart disease: Symptoms such as palpitations, shortness of breath, or unusual fatigue may indicate a serious problem. If you have any of these, contact your health care provider."
+    "cautionary_statement": "Unusually sensitive people: Consider making outdoor activities shorter and less intense. Go inside if you have symptoms such as coughing or shortness of breath."
   }
 ]

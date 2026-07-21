@@ -1,7 +1,7 @@
 [
   {
-    "aqi_category": "UNHEALTHY FOR SENSITIVE",
-    "max_value": 125.0,
+    "aqi_category": "MODERATE",
+    "max_value": 99.0,
     "main_pollutant": "pm25"
   }
 ]
