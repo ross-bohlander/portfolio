@@ -1,7 +1,7 @@
 [
   {
     "aqi_category": "GOOD",
-    "max_value": 35.0,
+    "max_value": 42.0,
     "main_pollutant": "o3",
     "sensitive_groups": "People with lung disease, such as asthma; children, including teenagers; people who are active outdoors; and older adults.",
     "cautionary_statement": "It's a great day to be active outside."
