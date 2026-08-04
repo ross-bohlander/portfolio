@@ -5,15 +5,15 @@
   },
   {
     "parameter": "o3",
-    "aqi_value": 30.0
+    "aqi_value": 39.0
   },
   {
     "parameter": "pm10",
-    "aqi_value": 9.0
+    "aqi_value": 12.0
   },
   {
     "parameter": "pm25",
-    "aqi_value": 32.0
+    "aqi_value": 49.0
   },
   {
     "parameter": "so2",
