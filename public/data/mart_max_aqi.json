@@ -2,6 +2,6 @@
   {
     "aqi_category": "GOOD",
     "max_value": 49.0,
-    "main_pollutant": "pm25"
+    "main_pollutant": "o3"
   }
 ]
