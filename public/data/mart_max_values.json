@@ -1,17 +1,17 @@
 [
   {
     "parameter": "pm10",
-    "max_value": 15.0,
+    "max_value": 27.0,
     "alt_value": null
   },
   {
     "parameter": "pm25",
-    "max_value": 6.8,
+    "max_value": 11.8,
     "alt_value": null
   },
   {
     "parameter": "no2",
-    "max_value": -0.0,
+    "max_value": 1.0,
     "alt_value": null
   }
 ]
