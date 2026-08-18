@@ -5,10 +5,10 @@
   },
   {
     "parameter": "pm10",
-    "aqi_value": 25.0
+    "aqi_value": 11.0
   },
   {
     "parameter": "pm25",
-    "aqi_value": 56.0
+    "aqi_value": 23.0
   }
 ]
