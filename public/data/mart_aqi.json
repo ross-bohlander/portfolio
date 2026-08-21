@@ -1,14 +1,18 @@
 [
   {
     "parameter": "no2",
-    "aqi_value": 13.0
+    "aqi_value": 7.0
   },
   {
     "parameter": "pm10",
-    "aqi_value": 20.0
+    "aqi_value": 7.0
   },
   {
     "parameter": "pm25",
-    "aqi_value": 51.0
+    "aqi_value": 23.0
+  },
+  {
+    "parameter": "so2",
+    "aqi_value": 0.0
   }
 ]
