@@ -37620,6 +37620,12 @@
     "yield_pct": 3.8
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "1M",
+    "maturity_months": 1,
+    "yield_pct": 3.81
+  },
+  {
     "curve_date": "2018-10-16",
     "maturity_label": "2M",
     "maturity_months": 2,
@@ -49408,6 +49414,12 @@
     "maturity_label": "2M",
     "maturity_months": 2,
     "yield_pct": 3.8
+  },
+  {
+    "curve_date": "2026-08-27",
+    "maturity_label": "2M",
+    "maturity_months": 2,
+    "yield_pct": 3.81
   },
   {
     "curve_date": "1990-01-02",
@@ -104406,6 +104418,12 @@
     "yield_pct": 3.85
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "3M",
+    "maturity_months": 3,
+    "yield_pct": 3.84
+  },
+  {
     "curve_date": "2022-10-19",
     "maturity_label": "4M",
     "maturity_months": 4,
@@ -110179,6 +110197,12 @@
   },
   {
     "curve_date": "2026-08-26",
+    "maturity_label": "4M",
+    "maturity_months": 4,
+    "yield_pct": 3.88
+  },
+  {
+    "curve_date": "2026-08-27",
     "maturity_label": "4M",
     "maturity_months": 4,
     "yield_pct": 3.88
@@ -165198,6 +165222,12 @@
     "yield_pct": 3.94
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "6M",
+    "maturity_months": 6,
+    "yield_pct": 3.94
+  },
+  {
     "curve_date": "1990-01-02",
     "maturity_label": "1Y",
     "maturity_months": 12,
@@ -220210,6 +220240,12 @@
     "maturity_label": "1Y",
     "maturity_months": 12,
     "yield_pct": 4.02
+  },
+  {
+    "curve_date": "2026-08-27",
+    "maturity_label": "1Y",
+    "maturity_months": 12,
+    "yield_pct": 4.04
   },
   {
     "curve_date": "1990-01-02",
@@ -275226,6 +275262,12 @@
     "yield_pct": 4.19
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "2Y",
+    "maturity_months": 24,
+    "yield_pct": 4.2
+  },
+  {
     "curve_date": "1990-01-02",
     "maturity_label": "3Y",
     "maturity_months": 36,
@@ -330240,6 +330282,12 @@
     "yield_pct": 4.29
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "3Y",
+    "maturity_months": 36,
+    "yield_pct": 4.3
+  },
+  {
     "curve_date": "1990-01-02",
     "maturity_label": "5Y",
     "maturity_months": 60,
@@ -385252,6 +385300,12 @@
     "maturity_label": "5Y",
     "maturity_months": 60,
     "yield_pct": 4.37
+  },
+  {
+    "curve_date": "2026-08-27",
+    "maturity_label": "5Y",
+    "maturity_months": 60,
+    "yield_pct": 4.38
   },
   {
     "curve_date": "1990-01-02",
@@ -440268,6 +440322,12 @@
     "yield_pct": 4.51
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "7Y",
+    "maturity_months": 84,
+    "yield_pct": 4.52
+  },
+  {
     "curve_date": "1990-01-02",
     "maturity_label": "10Y",
     "maturity_months": 120,
@@ -495282,6 +495342,12 @@
     "yield_pct": 4.66
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "10Y",
+    "maturity_months": 120,
+    "yield_pct": 4.67
+  },
+  {
     "curve_date": "1993-10-01",
     "maturity_label": "20Y",
     "maturity_months": 240,
@@ -544662,6 +544728,12 @@
     "yield_pct": 5.17
   },
   {
+    "curve_date": "2026-08-27",
+    "maturity_label": "20Y",
+    "maturity_months": 240,
+    "yield_pct": 5.18
+  },
+  {
     "curve_date": "1990-01-02",
     "maturity_label": "30Y",
     "maturity_months": 360,
@@ -593710,5 +593782,11 @@
     "maturity_label": "30Y",
     "maturity_months": 360,
     "yield_pct": 5.18
+  },
+  {
+    "curve_date": "2026-08-27",
+    "maturity_label": "30Y",
+    "maturity_months": 360,
+    "yield_pct": 5.19
   }
 ]
