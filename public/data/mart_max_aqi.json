@@ -1,7 +1,7 @@
 [
   {
-    "aqi_category": "MODERATE",
-    "max_value": 55.0,
+    "aqi_category": "GOOD",
+    "max_value": 25.0,
     "main_pollutant": "pm25"
   }
 ]
