@@ -1,27 +1,22 @@
 [
   {
-    "parameter": "pm10",
-    "max_value": 7.0,
+    "parameter": "pm25",
+    "max_value": 4.0,
     "alt_value": null
   },
   {
-    "parameter": "pm25",
-    "max_value": 2.9,
+    "parameter": "pm10",
+    "max_value": 10.0,
     "alt_value": null
   },
   {
     "parameter": "no2",
-    "max_value": 6.0,
+    "max_value": 10.0,
     "alt_value": null
   },
   {
     "parameter": "so2",
     "max_value": 0.0,
     "alt_value": 0.0
-  },
-  {
-    "parameter": "o3",
-    "max_value": 0.023,
-    "alt_value": null
   }
 ]
