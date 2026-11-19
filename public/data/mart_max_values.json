@@ -1,12 +1,12 @@
 [
   {
     "parameter": "pm10",
-    "max_value": 51.0,
+    "max_value": 35.0,
     "alt_value": null
   },
   {
     "parameter": "pm25",
-    "max_value": 25.9,
+    "max_value": 17.6,
     "alt_value": null
   },
   {
@@ -16,12 +16,12 @@
   },
   {
     "parameter": "so2",
-    "max_value": 1.0,
+    "max_value": 0.0,
     "alt_value": 0.0
   },
   {
     "parameter": "o3",
-    "max_value": 0.013,
+    "max_value": 0.033,
     "alt_value": null
   }
 ]
